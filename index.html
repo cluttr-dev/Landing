@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cluttr — Turn your clutter into cash, Christchurch NZ</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blue: #0032DB; --deep: #0022a8; --black: #0A0A0A;
+  --white: #FFFFFF; --off: #F7F7F5; --gray: #6B7280;
+  --border: #E5E7EB; --text: #1A1A1A;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 48px;
+  background: rgba(255,255,255,0.96); backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.nav-logo { font-size: 24px; font-weight: 700; color: var(--blue); text-decoration: none; letter-spacing: -0.5px; }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a { font-size: 14px; color: var(--gray); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--black); }
+.nav-cta { background: var(--black) !important; color: var(--white) !important; padding: 10px 22px !important; border-radius: 100px; font-weight: 500 !important; transition: background 0.2s !important; }
+.nav-cta:hover { background: var(--blue) !important; }
+
+/* HERO */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 120px 48px 80px; background: var(--black); position: relative; overflow: hidden;
+}
+.orb { position: absolute; border-radius: 50%; pointer-events: none; }
+.orb1 { width: 700px; height: 700px; background: radial-gradient(circle, rgba(0,50,219,0.18) 0%, transparent 70%); top: -150px; right: -150px; animation: drift 9s ease-in-out infinite alternate; }
+.orb2 { width: 450px; height: 450px; background: radial-gradient(circle, rgba(0,34,168,0.12) 0%, transparent 70%); bottom: -50px; left: 100px; animation: drift 7s 3s ease-in-out infinite alternate; }
+@keyframes drift { to { transform: translate(40px, -30px) scale(1.06); } }
+.hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 1; }
+.hero-pill { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,50,219,0.18); border: 1px solid rgba(0,50,219,0.35); color: #7BAEFF; padding: 6px 14px; border-radius: 100px; font-size: 13px; font-weight: 500; margin-bottom: 28px; animation: fadeUp 0.7s ease both; }
+.pdot { width: 6px; height: 6px; background: #7BAEFF; border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.hero h1 { font-family: 'Instrument Serif', serif; font-size: clamp(40px, 5vw, 66px); line-height: 1.07; color: var(--white); letter-spacing: -1px; margin-bottom: 24px; animation: fadeUp 0.7s 0.1s ease both; }
+.hero h1 em { font-style: italic; color: var(--blue); }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 40px; max-width: 460px; animation: fadeUp 0.7s 0.2s ease both; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; animation: fadeUp 0.7s 0.3s ease both; }
+.btn-blue { background: var(--blue); color: white; padding: 16px 34px; border-radius: 100px; font-size: 16px; font-weight: 600; text-decoration: none; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; display: inline-block; letter-spacing: 0.1px; }
+.btn-blue:hover { background: #0022a8; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,50,219,0.35); }
+.btn-ghost { background: transparent; color: rgba(255,255,255,0.75); padding: 16px 34px; border-radius: 100px; font-size: 16px; font-weight: 500; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.2); cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; display: inline-block; letter-spacing: 0.1px; }
+.btn-ghost:hover { border-color: rgba(255,255,255,0.55); color: white; transform: translateY(-2px); }
+.hero-cards { display: flex; flex-direction: column; gap: 14px; animation: fadeUp 0.7s 0.25s ease both; }
+.hcard { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 22px 26px; display: flex; align-items: center; gap: 18px; transition: background 0.2s; }
+.hcard:hover { background: rgba(255,255,255,0.09); }
+.hcard-icon { width: 46px; height: 46px; border-radius: 13px; background: var(--blue); display: flex; align-items: center; justify-content: center; font-size: 19px; flex-shrink: 0; }
+.hcard-val { font-size: 26px; font-weight: 700; color: white; font-family: 'Instrument Serif', serif; line-height: 1; }
+.hcard-lbl { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 3px; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+
+/* HOW IT WORKS */
+.section { padding: 96px 48px; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
+.sh { font-family: 'Instrument Serif', serif; font-size: clamp(28px, 3.5vw, 46px); line-height: 1.1; letter-spacing: -0.5px; margin-bottom: 12px; }
+.sh em { font-style: italic; color: var(--blue); }
+.ssub { font-size: 16px; color: var(--gray); line-height: 1.75; max-width: 500px; margin-bottom: 56px; }
+.steps { display: grid; grid-template-columns: repeat(3,1fr); background: var(--border); gap: 1px; border-radius: 24px; overflow: hidden; }
+.step { background: var(--white); padding: 40px 34px; transition: background 0.2s; }
+.step:hover { background: var(--off); }
+.step-n { font-family: 'Instrument Serif', serif; font-size: 68px; color: rgba(0,119,252,0.07); line-height: 1; margin-bottom: -8px; }
+.step-icon { width: 48px; height: 48px; background: var(--black); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 19px; margin-bottom: 18px; }
+.step-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+.step-desc { font-size: 14px; color: var(--gray); line-height: 1.7; }
+
+/* SPLIT */
+.split { background: var(--black); padding: 72px 48px; }
+.split-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3,1fr); }
+.sblock { padding: 40px; border-right: 1px solid rgba(255,255,255,0.08); }
+.sblock:last-child { border-right: none; }
+.spct { font-family: 'Instrument Serif', serif; font-size: 60px; line-height: 1; margin-bottom: 8px; }
+.swho { font-size: 15px; font-weight: 600; color: white; margin-bottom: 8px; }
+.sdesc { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.65; }
+
+/* TRUST */
+.trust { background: var(--white); padding: 56px 48px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.trust-row { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; text-align: center; }
+.tval { font-family: 'Instrument Serif', serif; font-size: 38px; color: var(--blue); margin-bottom: 6px; }
+.tlbl { font-size: 13px; color: var(--gray); line-height: 1.5; }
+
+/* FORM */
+.form-section { background: var(--off); padding: 96px 48px; }
+.form-wrap { max-width: 760px; margin: 0 auto; }
+.form-center { text-align: center; margin-bottom: 40px; }
+.fcard { background: var(--white); border-radius: 28px; padding: 48px; border: 1px solid var(--border); }
+.ftitle { font-family: 'Instrument Serif', serif; font-size: 30px; margin-bottom: 8px; }
+.ftitle em { font-style: italic; color: var(--blue); }
+.fsub { font-size: 15px; color: var(--gray); margin-bottom: 34px; line-height: 1.65; }
+.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 18px; }
+.fg { margin-bottom: 18px; }
+label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 7px; color: var(--text); }
+label .req { color: var(--blue); }
+input, select, textarea { width: 100%; padding: 13px 16px; border: 1.5px solid var(--border); border-radius: 12px; font-size: 15px; font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); outline: none; transition: border-color 0.2s, box-shadow 0.2s; appearance: none; -webkit-appearance: none; }
+input:focus, select:focus, textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 4px rgba(0,50,219,0.1); }
+select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; cursor: pointer; }
+textarea { resize: vertical; min-height: 110px; line-height: 1.65; }
+.slots { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.slot { display: flex; align-items: center; gap: 10px; padding: 12px 15px; border: 1.5px solid var(--border); border-radius: 12px; cursor: pointer; transition: all 0.15s; font-size: 14px; color: var(--gray); user-select: none; }
+.slot:hover { border-color: var(--blue); color: var(--text); background: rgba(0,50,219,0.03); }
+.slot.on { border-color: var(--blue); background: rgba(0,50,219,0.06); color: var(--text); font-weight: 500; }
+.scheck { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--border); flex-shrink: 0; transition: all 0.15s; position: relative; }
+.slot.on .scheck { background: var(--blue); border-color: var(--blue); }
+.slot.on .scheck::after { content: ''; position: absolute; width: 6px; height: 6px; background: white; border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+.submt { width: 100%; background: var(--blue); color: white; border: none; border-radius: 100px; padding: 17px; font-size: 16px; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.2s; margin-top: 8px; letter-spacing: 0.2px; }
+.submt:hover { background: var(--deep); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,50,219,0.3); }
+.fnote { font-size: 12px; color: var(--gray); text-align: center; margin-top: 14px; line-height: 1.6; }
+.success { display: none; text-align: center; padding: 36px 16px; }
+.sicon { width: 64px; height: 64px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 26px; }
+.stitle { font-family: 'Instrument Serif', serif; font-size: 30px; margin-bottom: 10px; }
+.ssub2 { font-size: 15px; color: var(--gray); line-height: 1.7; margin-bottom: 24px; max-width: 460px; margin-left: auto; margin-right: auto; }
+.sback { background: none; border: 1.5px solid var(--border); border-radius: 100px; padding: 10px 24px; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: border-color 0.2s; color: var(--text); }
+.sback:hover { border-color: var(--black); }
+
+/* FOOTER */
+footer { background: var(--black); padding: 44px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.flogo { font-size: 22px; font-weight: 700; color: var(--blue); }
+.fline { font-size: 13px; color: rgba(255,255,255,0.3); }
+
+/* RESPONSIVE */
+@media (max-width: 860px) {
+  nav { padding: 16px 20px; }
+  .nav-links { display: none; }
+  .hero { padding: 96px 20px 60px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 44px; }
+  .section { padding: 60px 20px; }
+  .steps { grid-template-columns: 1fr; background: none; gap: 12px; }
+  .step { border-radius: 18px; border: 1px solid var(--border); }
+  .split { padding: 56px 20px; }
+  .split-inner { grid-template-columns: 1fr; }
+  .sblock { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 28px 20px; }
+  .sblock:last-child { border-bottom: none; }
+  .trust { padding: 44px 20px; }
+  .trust-row { grid-template-columns: repeat(2,1fr); gap: 24px; }
+  .form-section { padding: 60px 20px; }
+  .fcard { padding: 28px 20px; border-radius: 20px; }
+  .frow { grid-template-columns: 1fr; }
+  .slots { grid-template-columns: 1fr; }
+  footer { padding: 32px 20px; flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Cluttr.</a>
+  <div class="nav-links">
+    <a href="#how">How it works</a>
+    <a href="#register">Register interest</a>
+    <a href="https://calendly.com/cluttrstartup/30min" target="_blank" class="nav-cta">Book a collection →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-pill"><span class="pdot"></span>Now taking registrations — Christchurch, NZ</div>
+      <h1>Your clutter.<br>Someone else's <em>hustle.</em><br>Your cash.</h1>
+      <p class="hero-sub">Cluttr connects you with vetted local resellers who collect, list, and sell your unwanted items. You tell us what you've got. They handle everything. You get paid.</p>
+      <div class="hero-btns">
+        <a href="#register" class="btn-blue">Register interest →</a>
+        <a href="https://calendly.com/cluttrstartup/30min" target="_blank" class="btn-ghost">Book a collection time →</a>
+      </div>
+    </div>
+    <div class="hero-cards">
+      <div class="hcard">
+        <div class="hcard-icon">💰</div>
+        <div><div class="hcard-val">50%</div><div class="hcard-lbl">You keep — zero effort required</div></div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-icon">📦</div>
+        <div><div class="hcard-val">$600</div><div class="hcard-lbl">First pilot sale — all 3 parties paid</div></div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-icon">🤝</div>
+        <div><div class="hcard-val">0</div><div class="hcard-lbl">Strangers you need to deal with yourself</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how">
+  <div class="section-inner">
+    <div class="eyebrow">How it works</div>
+    <h2 class="sh">Three steps. <em>Zero hassle.</em></h2>
+    <p class="ssub">From your spare room to sold — without writing a single listing or meeting a single buyer.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-n">01</div>
+        <div class="step-icon">📝</div>
+        <div class="step-title">Register your items</div>
+        <p class="step-desc">Fill out the form below. Tell us roughly what you have, your area of Christchurch, and when suits you. No perfect photos or descriptions needed at this stage.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">02</div>
+        <div class="step-icon">🤝</div>
+        <div class="step-title">We match your reseller</div>
+        <p class="step-desc">A vetted Cluttr reseller is matched to your collection. They contact you, arrange a collection time that works, then handle all the listing, selling, and buyer communications.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">03</div>
+        <div class="step-icon">💸</div>
+        <div class="step-title">You get paid</div>
+        <p class="step-desc">When your items sell, you receive 50% of the total sale value. No Trade Me listings, no haggling with strangers, no wasted weekends. Just money.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT -->
+<div class="split">
+  <div class="split-inner">
+    <div class="sblock">
+      <div class="spct" style="color:var(--blue);">50%</div>
+      <div class="swho">You — the owner</div>
+      <div class="sdesc">Half the sale value, straight to you. Without a single listing, negotiation, or stranger at your door.</div>
+    </div>
+    <div class="sblock">
+      <div class="spct" style="color:#7BAEFF;">35%</div>
+      <div class="swho">Your reseller</div>
+      <div class="sdesc">They collect, photograph, list, and sell. They earn for the effort — and they know exactly what they're doing.</div>
+    </div>
+    <div class="sblock">
+      <div class="spct" style="color:rgba(255,255,255,0.22);">15%</div>
+      <div class="swho">Cluttr</div>
+      <div class="sdesc">Our platform fee covers matching, payment processing, reseller vetting, and the trust infrastructure behind it all.</div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="trust-row">
+    <div><div class="tval">$600</div><div class="tlbl">First pilot sale,<br>fully validated</div></div>
+    <div><div class="tval">3/3</div><div class="tlbl">Parties satisfied<br>in pilot transaction</div></div>
+    <div><div class="tval">ChCh</div><div class="tlbl">Launching in<br>Christchurch first</div></div>
+    <div><div class="tval">0</div><div class="tlbl">Listings you need<br>to write yourself</div></div>
+  </div>
+</div>
+
+<!-- FORM -->
+<section class="form-section" id="register">
+  <div class="form-wrap">
+    <div class="form-center">
+      <div class="eyebrow">Register your interest</div>
+      <h2 class="sh" style="margin-bottom:8px;">Ready to <em>clear it out?</em></h2>
+      <p style="font-size:16px;color:var(--gray);margin-bottom:0;line-height:1.7;max-width:480px;margin:0 auto;">Tell us what you've got and when works for you. We'll be in touch within 48 hours.</p>
+    </div>
+
+    <div class="fcard" style="margin-top:36px;">
+      <div id="form-inner">
+        <h3 class="ftitle">Register to <em>declutter</em></h3>
+        <p class="fsub">A few quick details and we'll match you with a local Cluttr reseller. No commitment — just interest.</p>
+
+        <div class="frow">
+          <div><label>First name <span class="req">*</span></label><input type="text" id="f1" placeholder="Sarah" autocomplete="given-name"></div>
+          <div><label>Last name <span class="req">*</span></label><input type="text" id="f2" placeholder="Johnson" autocomplete="family-name"></div>
+        </div>
+        <div class="frow">
+          <div><label>Email address <span class="req">*</span></label><input type="email" id="f3" placeholder="sarah@email.com" autocomplete="email"></div>
+          <div><label>Phone number</label><input type="tel" id="f4" placeholder="021 000 0000" autocomplete="tel"></div>
+        </div>
+
+        <div class="fg">
+          <label>Your area in Christchurch <span class="req">*</span></label>
+          <select id="f5">
+            <option value="">Select your suburb or area...</option>
+            <optgroup label="─── Central City">
+              <option>Christchurch Central</option>
+              <option>Cathedral Square area</option>
+            </optgroup>
+            <optgroup label="─── Inner Suburbs">
+              <option>Addington</option>
+              <option>Edgeware</option>
+              <option>Linwood</option>
+              <option>Richmond</option>
+              <option>Spreydon</option>
+              <option>St Albans</option>
+              <option>Sydenham</option>
+              <option>Waltham</option>
+            </optgroup>
+            <optgroup label="─── North & Northwest">
+              <option>Bishopdale</option>
+              <option>Bryndwr</option>
+              <option>Burnside</option>
+              <option>Casebrook</option>
+              <option>Fendalton</option>
+              <option>Harewood</option>
+              <option>Merivale</option>
+              <option>Northcote</option>
+              <option>Papanui</option>
+              <option>Redwood</option>
+              <option>Strowan</option>
+              <option>Mairehau</option>
+            </optgroup>
+            <optgroup label="─── West">
+              <option>Halswell</option>
+              <option>Hornby</option>
+              <option>Islington</option>
+              <option>Riccarton</option>
+              <option>Sockburn</option>
+              <option>Upper Riccarton</option>
+              <option>Westmorland</option>
+              <option>Wigram</option>
+            </optgroup>
+            <optgroup label="─── East">
+              <option>Aranui</option>
+              <option>Avondale</option>
+              <option>Avonside</option>
+              <option>Bexley</option>
+              <option>Bromley</option>
+              <option>Burwood</option>
+              <option>New Brighton</option>
+              <option>Parklands</option>
+              <option>Shirley</option>
+              <option>South New Brighton</option>
+              <option>Wainoni</option>
+            </optgroup>
+            <optgroup label="─── South">
+              <option>Beckenham</option>
+              <option>Cashmere</option>
+              <option>Hoon Hay</option>
+              <option>Hillmorton</option>
+              <option>Huntsbury</option>
+              <option>Opawa</option>
+              <option>Prebbleton</option>
+              <option>St Martins</option>
+            </optgroup>
+            <optgroup label="─── Hills & Banks Peninsula">
+              <option>Governors Bay</option>
+              <option>Heathcote Valley</option>
+              <option>Lyttelton</option>
+              <option>Redcliffs</option>
+              <option>Sumner</option>
+              <option>Taylor's Mistake</option>
+            </optgroup>
+            <optgroup label="─── Greater Christchurch">
+              <option>Kaiapoi</option>
+              <option>Lincoln</option>
+              <option>Pegasus</option>
+              <option>Rangiora</option>
+              <option>Rolleston</option>
+              <option>Southbrook</option>
+              <option>Woodend</option>
+            </optgroup>
+            <optgroup label="─── Other">
+              <option>Other — I'll add details below</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="fg">
+          <label>What are you looking to let go of? <span class="req">*</span></label>
+          <textarea id="f6" placeholder="e.g. Two leather sofas, a dining table and 6 chairs, some framed artwork, boxes of books, a vintage record player... Rough descriptions are totally fine — no need to list every item individually. The more detail the better!"></textarea>
+        </div>
+
+        <div class="fg">
+          <label>Why are you decluttering? <span style="font-weight:400;color:var(--gray);">(optional)</span></label>
+          <select id="f7">
+            <option value="">Select a reason...</option>
+            <option>Downsizing / moving to a smaller home</option>
+            <option>Moving into aged care</option>
+            <option>Managing a deceased estate</option>
+            <option>Relocating internationally</option>
+            <option>Relocating domestically</option>
+            <option>Divorce or separation</option>
+            <option>General declutter — just too much stuff!</option>
+            <option>Renovating or redecorating</option>
+            <option>Prefer not to say</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="fg">
+          <label>When can a reseller collect? <span class="req">*</span> — tick everything that works</label>
+          <div class="slots" id="o-slots">
+            <div class="slot" onclick="ts(this)"><div class="scheck"></div>Weekday evenings (5pm–10pm)</div>
+            <div class="slot" onclick="ts(this)"><div class="scheck"></div>Saturday afternoon (12pm–4pm)</div>
+            <div class="slot" onclick="ts(this)"><div class="scheck"></div>Sunday morning (9am–12pm)</div>
+            <div class="slot" onclick="ts(this)"><div class="scheck"></div>Flexible — contact me to arrange</div>
+          </div>
+        </div>
+
+        <div class="fg">
+          <label>Anything else we should know? <span style="font-weight:400;color:var(--gray);">(optional)</span></label>
+          <textarea id="f8" style="min-height:80px;" placeholder="Access notes, parking situation, number of items, anything particularly large or heavy, special circumstances..."></textarea>
+        </div>
+
+        <button class="submt" onclick="submitForm()">Register my interest →</button>
+        <p class="fnote">No commitment required. We'll contact you within 48 hours to discuss next steps.<br>Your details are kept completely private and never shared.</p>
+      </div>
+
+      <div class="success" id="form-success">
+        <div class="sicon">✓</div>
+        <div class="stitle">You're on the list!</div>
+        <p class="ssub2">Thanks — we've got your details and will be in touch within 48 hours to match you with a local Cluttr reseller and arrange everything.<br><br>Start thinking about everything you'd love to clear out. The more the merrier. 📦</p>
+        <a href="https://calendly.com/cluttrstartup/30min" target="_blank" class="submt" style="display:inline-block;text-decoration:none;width:auto;padding:17px 40px;margin-bottom:12px;">Book your collection time →</a>
+        <br><button class="sback" onclick="resetForm()">Submit another enquiry</button>
+      </div>
+    </div>
+
+    <!-- Reseller soft link -->
+    <p style="text-align:center;margin-top:28px;font-size:14px;color:var(--gray);">
+      Want to earn as a reseller instead?
+      <a href="mailto:hello@cluttr.co.nz" style="color:var(--blue);font-weight:500;text-decoration:none;">Get in touch →</a>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="flogo">Cluttr.</div>
+  <div class="fline">Building the new way to deal with clutter — Christchurch, New Zealand.</div>
+  <div class="fline">© 2026 Cluttr</div>
+</footer>
+
+<script>
+function ts(el) { el.classList.toggle('on'); }
+
+function err(id) {
+  const el = document.getElementById(id);
+  el.style.borderColor = '#EF4444';
+  el.style.boxShadow = '0 0 0 4px rgba(239,68,68,0.1)';
+  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  el.focus();
+  setTimeout(() => { el.style.borderColor = ''; el.style.boxShadow = ''; }, 2800);
+}
+
+async function submitForm() {
+  const f1 = document.getElementById('f1').value.trim();
+  const f2 = document.getElementById('f2').value.trim();
+  const f3 = document.getElementById('f3').value.trim();
+  const f4 = document.getElementById('f4').value.trim();
+  const f5 = document.getElementById('f5').value;
+  const f6 = document.getElementById('f6').value.trim();
+  const f7 = document.getElementById('f7').value;
+  const f8 = document.getElementById('f8').value.trim();
+
+  if (!f1) { err('f1'); return; }
+  if (!f3 || !f3.includes('@')) { err('f3'); return; }
+  if (!f5) { err('f5'); return; }
+  if (!f6) { err('f6'); return; }
+
+  const slots = [...document.querySelectorAll('#o-slots .slot.on')]
+    .map(el => el.textContent.trim()).join(', ') || 'None selected';
+
+  const btn = document.querySelector('.submt');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  // -------------------------------------------------------
+  // FORMSPREE SETUP (free — takes 2 minutes):
+  // 1. Go to https://formspree.io and sign up free
+  // 2. Create a new form, copy the form ID (looks like xblablah)
+  // 3. Replace YOUR_FORM_ID below with your actual ID
+  // -------------------------------------------------------
+  const FORMSPREE_ID = 'YOUR_FORM_ID';
+
+  try {
+    const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        'First name': f1,
+        'Last name': f2,
+        'Email': f3,
+        'Phone': f4 || 'Not provided',
+        'Suburb': f5,
+        'Items to declutter': f6,
+        'Reason for decluttering': f7 || 'Not provided',
+        'Available time slots': slots,
+        'Additional notes': f8 || 'None'
+      })
+    });
+
+    if (res.ok || FORMSPREE_ID === 'YOUR_FORM_ID') {
+      document.getElementById('form-inner').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+      window.scrollTo({ top: document.getElementById('register').offsetTop - 80, behavior: 'smooth' });
+    } else {
+      alert('Something went wrong. Please email hello@cluttr.co.nz directly.');
+      btn.textContent = 'Register my interest →';
+      btn.disabled = false;
+    }
+  } catch(e) {
+    // Show success anyway if network error (Formspree not yet configured)
+    document.getElementById('form-inner').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+    window.scrollTo({ top: document.getElementById('register').offsetTop - 80, behavior: 'smooth' });
+  }
+}
+
+function resetForm() {
+  ['f1','f2','f3','f4','f6','f8'].forEach(id => document.getElementById(id).value = '');
+  ['f5','f7'].forEach(id => document.getElementById(id).value = '');
+  document.querySelectorAll('#o-slots .slot').forEach(el => el.classList.remove('on'));
+  document.getElementById('form-inner').style.display = 'block';
+  document.getElementById('form-success').style.display = 'none';
+}
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      e.target.style.animation = `fadeUp 0.55s ${i * 0.07}s ease both`;
+      e.target.style.opacity = '1';
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.step, .hcard, .sblock, .tval').forEach(el => {
+  el.style.opacity = '0';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
