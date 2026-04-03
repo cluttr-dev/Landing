@@ -29,7 +29,8 @@ nav {
   background: rgba(255,255,255,0.9); backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid var(--border);
 }
-.nav-logo { font-size: 20px; font-weight: 800; color: var(--blue); text-decoration: none; letter-spacing: -0.5px; }
+.nav-logo { text-decoration: none; display: flex; align-items: center; }
+.nav-logo img { height: 28px; width: auto; display: block; }
 .nav-right { display: flex; align-items: center; gap: 12px; }
 .nav-links a { font-size: 13px; font-weight: 600; color: var(--gray); text-decoration: none; padding: 6px 10px; border-radius: 8px; transition: all 0.15s; display: none; }
 .nav-links a:hover { color: var(--black); background: var(--off); }
@@ -224,7 +225,8 @@ textarea { resize: vertical; min-height: 88px; line-height: 1.6; }
 footer { background: var(--black); padding: 36px 20px; }
 .footer-inner { max-width: 480px; margin: 0 auto; }
 .footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 28px; flex-wrap: wrap; gap: 20px; }
-.footer-logo { font-size: 20px; font-weight: 800; color: var(--blue); margin-bottom: 5px; }
+.footer-logo { margin-bottom: 5px; }
+.footer-logo img { height: 24px; width: auto; display: block; filter: brightness(0) invert(1); }
 .footer-tagline { font-size: 12px; color: rgba(255,255,255,0.28); line-height: 1.6; max-width: 180px; }
 .footer-links { display: flex; flex-direction: column; gap: 8px; text-align: right; }
 .footer-links a { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; font-weight: 500; transition: color 0.15s; }
@@ -386,7 +388,7 @@ footer { background: var(--black); padding: 36px 20px; }
       <h3>Want to earn<br>as a reseller?</h3>
       <p style="margin-top:8px;">Join the network. You collect, sell, and keep 35% of everything. Flexible and local.</p>
     </div>
-    <a href="mailto:hello@cluttr.co.nz" class="btn-white-sm">Get in touch →</a>
+    <a href="/cdn-cgi/l/email-protection#18707d747477587b746d6c6c6a367b77367662" class="btn-white-sm">Get in touch →</a>
   </div>
 </div>
 
@@ -471,7 +473,7 @@ footer { background: var(--black); padding: 36px 20px; }
         </div>
       </div>
     </div>
-    <p style="text-align:center;margin-top:18px;font-size:14px;color:var(--gray);">Want to earn as a reseller? <a href="mailto:hello@cluttr.co.nz" style="color:var(--blue);font-weight:600;text-decoration:none;">Get in touch →</a></p>
+    <p style="text-align:center;margin-top:18px;font-size:14px;color:var(--gray);">Want to earn as a reseller? <a href="/cdn-cgi/l/email-protection#38505d545457785b544d4c4c4a165b57165642" style="color:var(--blue);font-weight:600;text-decoration:none;">Get in touch →</a></p>
   </div>
 </div>
 
@@ -497,7 +499,7 @@ footer { background: var(--black); padding: 36px 20px; }
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function ts(el) { el.classList.toggle('on'); }
 function err(id) {
   const el = document.getElementById(id);
@@ -534,11 +536,4 @@ function resetForm() {
   document.getElementById('form-success').style.display='none';
 }
 const obs=new IntersectionObserver(entries=>{
-  entries.forEach((e,i)=>{
-    if(e.isIntersecting){e.target.style.animation=`fadeUp 0.45s ${i*0.05}s ease both`;e.target.style.opacity='1';obs.unobserve(e.target);}
-  });
-},{threshold:0.12});
-document.querySelectorAll('.step,.who-card,.s-block').forEach(el=>{el.style.opacity='0';obs.observe(el);});
-</script>
-</body>
-</html>
+  en
