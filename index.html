@@ -4,148 +4,248 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cluttr — Turn your clutter into cash, Christchurch NZ</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"><style>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --blue: #0032DB; --deep: #0022a8; --black: #0A0A0A;
-  --white: #FFFFFF; --off: #F7F7F5; --gray: #6B7280;
-  --border: #E5E7EB; --text: #1A1A1A;
+  --blue: #0077FC;
+  --deep: #0032DB;
+  --black: #0A0A0A;
+  --white: #FFFFFF;
+  --off: #F5F5F7;
+  --gray: #6B7280;
+  --border: rgba(0,0,0,0.08);
+  --green: #22C55E;
+  --font: 'Plus Jakarta Sans', sans-serif;
 }
 html { scroll-behavior: smooth; }
-body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; }
+body { font-family: var(--font); background: var(--white); color: var(--black); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
 /* NAV */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 18px 48px;
-  background: rgba(255,255,255,0.96); backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding: 0 20px; height: 56px;
+  background: rgba(255,255,255,0.9); backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--border);
 }
-.nav-logo { font-size: 24px; font-weight: 700; color: var(--blue); text-decoration: none; letter-spacing: -0.5px; }
-.nav-links { display: flex; gap: 32px; align-items: center; }
-.nav-links a { font-size: 14px; color: var(--gray); text-decoration: none; transition: color 0.2s; }
-.nav-links a:hover { color: var(--black); }
-.nav-cta { background: var(--black) !important; color: var(--white) !important; padding: 10px 22px !important; border-radius: 100px; font-weight: 500 !important; transition: background 0.2s !important; }
-.nav-cta:hover { background: var(--blue) !important; }
+.nav-logo { font-size: 20px; font-weight: 800; color: var(--blue); text-decoration: none; letter-spacing: -0.5px; }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.nav-links a { font-size: 13px; font-weight: 600; color: var(--gray); text-decoration: none; padding: 6px 10px; border-radius: 8px; transition: all 0.15s; display: none; }
+.nav-links a:hover { color: var(--black); background: var(--off); }
+.nav-cta { background: var(--blue); color: white; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; text-decoration: none; transition: all 0.15s; white-space: nowrap; }
+.nav-cta:hover { background: var(--deep); }
 
 /* HERO */
 .hero {
-  min-height: 100vh; display: flex; align-items: center;
-  padding: 120px 48px 80px; background: var(--black); position: relative; overflow: hidden;
+  min-height: 100svh; background: var(--black);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 80px 20px 56px; position: relative; overflow: hidden; text-align: center;
 }
 .orb { position: absolute; border-radius: 50%; pointer-events: none; }
-.orb1 { width: 700px; height: 700px; background: radial-gradient(circle, rgba(0,50,219,0.18) 0%, transparent 70%); top: -150px; right: -150px; animation: drift 9s ease-in-out infinite alternate; }
-.orb2 { width: 450px; height: 450px; background: radial-gradient(circle, rgba(0,34,168,0.12) 0%, transparent 70%); bottom: -50px; left: 100px; animation: drift 7s 3s ease-in-out infinite alternate; }
-@keyframes drift { to { transform: translate(40px, -30px) scale(1.06); } }
-.hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 1; }
-.hero-pill { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,50,219,0.18); border: 1px solid rgba(0,50,219,0.35); color: #7BAEFF; padding: 6px 14px; border-radius: 100px; font-size: 13px; font-weight: 500; margin-bottom: 28px; animation: fadeUp 0.7s ease both; }
-.pdot { width: 6px; height: 6px; background: #7BAEFF; border-radius: 50%; animation: pulse 2s infinite; }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
-.hero h1 { font-family: 'Instrument Serif', serif; font-size: clamp(40px, 5vw, 66px); line-height: 1.07; color: var(--white); letter-spacing: -1px; margin-bottom: 24px; animation: fadeUp 0.7s 0.1s ease both; }
-.hero h1 em { font-style: italic; color: var(--blue); }
-.hero-sub { font-size: 17px; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 40px; max-width: 460px; animation: fadeUp 0.7s 0.2s ease both; }
-.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; animation: fadeUp 0.7s 0.3s ease both; }
-.btn-blue { background: var(--blue); color: white; padding: 16px 34px; border-radius: 100px; font-size: 16px; font-weight: 600; text-decoration: none; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; display: inline-block; letter-spacing: 0.1px; }
-.btn-blue:hover { background: #0022a8; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,50,219,0.35); }
-.btn-ghost { background: transparent; color: rgba(255,255,255,0.75); padding: 16px 34px; border-radius: 100px; font-size: 16px; font-weight: 500; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.2); cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; display: inline-block; letter-spacing: 0.1px; }
-.btn-ghost:hover { border-color: rgba(255,255,255,0.55); color: white; transform: translateY(-2px); }
-.hero-cards { display: flex; flex-direction: column; gap: 14px; animation: fadeUp 0.7s 0.25s ease both; }
-.hcard { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 22px 26px; display: flex; align-items: center; gap: 18px; transition: background 0.2s; }
-.hcard:hover { background: rgba(255,255,255,0.09); }
-.hcard-icon { width: 46px; height: 46px; border-radius: 13px; background: var(--blue); display: flex; align-items: center; justify-content: center; font-size: 19px; flex-shrink: 0; }
-.hcard-val { font-size: 26px; font-weight: 700; color: white; font-family: 'Instrument Serif', serif; line-height: 1; }
-.hcard-lbl { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 3px; }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+.orb1 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(0,119,252,0.2) 0%, transparent 70%);
+  top: -80px; left: 50%; transform: translateX(-50%);
+  filter: blur(50px); animation: breathe 7s ease-in-out infinite alternate;
+}
+.orb2 {
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(0,50,219,0.18) 0%, transparent 70%);
+  bottom: 40px; right: -60px; filter: blur(60px);
+  animation: breathe 9s 3s ease-in-out infinite alternate;
+}
+@keyframes breathe { to { opacity: 0.65; transform: scale(1.12) translateX(0); } }
+
+.live-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.28);
+  color: var(--green); padding: 7px 16px; border-radius: 20px;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.01em;
+  margin-bottom: 28px; position: relative; z-index: 1;
+  box-shadow: 0 0 24px rgba(34,197,94,0.12), 0 0 80px rgba(34,197,94,0.05);
+  animation: fadeUp 0.5s ease both;
+}
+.live-dot {
+  width: 7px; height: 7px; background: var(--green); border-radius: 50%;
+  box-shadow: 0 0 8px var(--green), 0 0 16px rgba(34,197,94,0.4);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.55;transform:scale(0.8)} }
+
+.hero-content { position: relative; z-index: 1; max-width: 480px; margin: 0 auto; }
+.hero h1 {
+  font-size: clamp(40px, 11vw, 66px); font-weight: 800;
+  color: var(--white); line-height: 1.05; letter-spacing: -2px;
+  margin-bottom: 18px; animation: fadeUp 0.5s 0.06s ease both;
+}
+.hero h1 .accent { color: var(--blue); }
+.hero-sub {
+  font-size: 16px; color: rgba(255,255,255,0.45); line-height: 1.7;
+  margin-bottom: 36px; animation: fadeUp 0.5s 0.12s ease both;
+}
+.hero-btns {
+  display: flex; flex-direction: column; gap: 10px; align-items: center;
+  animation: fadeUp 0.5s 0.18s ease both;
+}
+.btn-blue {
+  background: var(--blue); color: white; padding: 15px 28px; border-radius: 14px;
+  font-size: 15px; font-weight: 700; text-decoration: none; border: none; cursor: pointer;
+  font-family: var(--font); transition: all 0.2s; display: inline-block; width: 100%; max-width: 300px;
+  box-shadow: 0 8px 24px rgba(0,119,252,0.28);
+}
+.btn-blue:hover { background: var(--deep); transform: translateY(-1px); box-shadow: 0 12px 28px rgba(0,119,252,0.38); }
+.btn-ghost {
+  background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.6); padding: 15px 28px; border-radius: 14px;
+  font-size: 15px; font-weight: 600; text-decoration: none; border: 1px solid rgba(255,255,255,0.12);
+  cursor: pointer; font-family: var(--font); transition: all 0.2s; display: inline-block; width: 100%; max-width: 300px;
+}
+.btn-ghost:hover { color: white; border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.09); }
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+
+/* SPLIT BAR */
+.split-bar { background: var(--black); padding: 0 20px 40px; }
+.split-inner {
+  max-width: 480px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3,1fr);
+  background: rgba(255,255,255,0.03); border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.07); overflow: hidden;
+}
+.s-block { padding: 18px 14px; text-align: center; }
+.s-block + .s-block { border-left: 1px solid rgba(255,255,255,0.07); }
+.s-pct { font-size: 32px; font-weight: 800; letter-spacing: -1.5px; line-height: 1; margin-bottom: 4px; }
+.s-who { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 3px; }
+.s-desc { font-size: 11px; color: rgba(255,255,255,0.25); line-height: 1.5; }
+
+/* SECTION WRAPPER */
+.section { padding: 52px 20px; }
+.section-inner { max-width: 480px; margin: 0 auto; }
+.eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
+.section-title { font-size: clamp(26px, 7vw, 34px); font-weight: 800; letter-spacing: -1px; line-height: 1.1; margin-bottom: 10px; }
+.section-sub { font-size: 15px; color: var(--gray); line-height: 1.7; margin-bottom: 28px; }
 
 /* HOW IT WORKS */
-.section { padding: 96px 48px; }
-.section-inner { max-width: 1200px; margin: 0 auto; }
-.eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
-.sh { font-family: 'Instrument Serif', serif; font-size: clamp(28px, 3.5vw, 46px); line-height: 1.1; letter-spacing: -0.5px; margin-bottom: 12px; }
-.sh em { font-style: italic; color: var(--blue); }
-.ssub { font-size: 16px; color: var(--gray); line-height: 1.75; max-width: 500px; margin-bottom: 56px; }
-.steps { display: grid; grid-template-columns: repeat(3,1fr); background: var(--border); gap: 1px; border-radius: 24px; overflow: hidden; }
-.step { background: var(--white); padding: 40px 34px; transition: background 0.2s; }
-.step:hover { background: var(--off); }
-.step-n { font-family: 'Instrument Serif', serif; font-size: 68px; color: rgba(0,119,252,0.07); line-height: 1; margin-bottom: -8px; }
-.step-icon { width: 48px; height: 48px; background: var(--black); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 19px; margin-bottom: 18px; }
-.step-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-.step-desc { font-size: 14px; color: var(--gray); line-height: 1.7; }
+.how-bg { background: var(--off); }
+.steps { display: flex; flex-direction: column; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); background: var(--white); }
+.step {
+  display: flex; align-items: flex-start; gap: 14px; padding: 20px 18px;
+  border-bottom: 1px solid var(--border); transition: background 0.15s;
+}
+.step:last-child { border-bottom: none; }
+.step-icon-wrap {
+  width: 38px; height: 38px; border-radius: 11px; background: rgba(0,119,252,0.08);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+}
+.step-icon-wrap svg { width: 18px; height: 18px; stroke: var(--blue); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.step-num { font-size: 10px; font-weight: 700; color: var(--blue); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 3px; }
+.step-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.2px; }
+.step-desc { font-size: 13px; color: var(--gray); line-height: 1.6; }
 
-/* SPLIT */
-.split { background: var(--black); padding: 72px 48px; }
-.split-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3,1fr); }
-.sblock { padding: 40px; border-right: 1px solid rgba(255,255,255,0.08); }
-.sblock:last-child { border-right: none; }
-.spct { font-family: 'Instrument Serif', serif; font-size: 60px; line-height: 1; margin-bottom: 8px; }
-.swho { font-size: 15px; font-weight: 600; color: white; margin-bottom: 8px; }
-.sdesc { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.65; }
+/* WHO */
+.who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.who-card {
+  background: var(--off); border-radius: 14px; padding: 16px 14px;
+  border: 1px solid var(--border); transition: all 0.15s;
+}
+.who-card:hover { background: rgba(0,119,252,0.05); border-color: rgba(0,119,252,0.18); }
+.who-icon { width: 34px; height: 34px; border-radius: 10px; background: rgba(0,119,252,0.09); display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+.who-icon svg { width: 17px; height: 17px; stroke: var(--blue); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.who-title { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
+.who-sub { font-size: 12px; color: var(--gray); line-height: 1.5; }
 
-/* TRUST */
-.trust { background: var(--white); padding: 56px 48px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.trust-row { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; text-align: center; }
-.tval { font-family: 'Instrument Serif', serif; font-size: 38px; color: var(--blue); margin-bottom: 6px; }
-.tlbl { font-size: 13px; color: var(--gray); line-height: 1.5; }
+/* RESELLER STRIP */
+.reseller-wrap { padding: 0 20px 52px; }
+.reseller-strip {
+  max-width: 480px; margin: 0 auto; border-radius: 16px; background: var(--blue);
+  padding: 26px 22px; display: flex; flex-direction: column; gap: 14px;
+}
+.reseller-strip h3 { font-size: 22px; font-weight: 800; color: white; letter-spacing: -0.5px; line-height: 1.2; }
+.reseller-strip p { font-size: 14px; color: rgba(255,255,255,0.62); line-height: 1.6; }
+.btn-white-sm {
+  background: white; color: var(--blue); padding: 11px 22px; border-radius: 11px;
+  font-size: 14px; font-weight: 700; text-decoration: none; display: inline-block;
+  transition: all 0.15s; align-self: flex-start;
+}
+.btn-white-sm:hover { background: var(--off); }
 
 /* FORM */
-.form-section { background: var(--off); padding: 96px 48px; }
-.form-wrap { max-width: 760px; margin: 0 auto; }
-.form-center { text-align: center; margin-bottom: 40px; }
-.fcard { background: var(--white); border-radius: 28px; padding: 48px; border: 1px solid var(--border); }
-.ftitle { font-family: 'Instrument Serif', serif; font-size: 30px; margin-bottom: 8px; }
-.ftitle em { font-style: italic; color: var(--blue); }
-.fsub { font-size: 15px; color: var(--gray); margin-bottom: 34px; line-height: 1.65; }
-.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 18px; }
-.fg { margin-bottom: 18px; }
-label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 7px; color: var(--text); }
+.form-bg { background: var(--off); }
+.fcard {
+  background: var(--white); border-radius: 18px; overflow: hidden;
+  border: 1px solid var(--border); box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+}
+.fcard-head { background: var(--black); padding: 20px 22px; }
+.fcard-head h3 { font-size: 17px; font-weight: 800; color: white; letter-spacing: -0.3px; }
+.fcard-head p { font-size: 13px; color: rgba(255,255,255,0.38); margin-top: 3px; }
+.fcard-body { padding: 20px 22px; }
+.fg { margin-bottom: 13px; }
+.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 13px; }
+label { display: block; font-size: 12px; font-weight: 700; margin-bottom: 5px; color: var(--black); letter-spacing: 0.02em; }
 label .req { color: var(--blue); }
-input, select, textarea { width: 100%; padding: 13px 16px; border: 1.5px solid var(--border); border-radius: 12px; font-size: 15px; font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); outline: none; transition: border-color 0.2s, box-shadow 0.2s; appearance: none; -webkit-appearance: none; }
-input:focus, select:focus, textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 4px rgba(0,50,219,0.1); }
-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; cursor: pointer; }
-textarea { resize: vertical; min-height: 110px; line-height: 1.65; }
-.slots { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.slot { display: flex; align-items: center; gap: 10px; padding: 12px 15px; border: 1.5px solid var(--border); border-radius: 12px; cursor: pointer; transition: all 0.15s; font-size: 14px; color: var(--gray); user-select: none; }
-.slot:hover { border-color: var(--blue); color: var(--text); background: rgba(0,50,219,0.03); }
-.slot.on { border-color: var(--blue); background: rgba(0,50,219,0.06); color: var(--text); font-weight: 500; }
-.scheck { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--border); flex-shrink: 0; transition: all 0.15s; position: relative; }
+input, select, textarea {
+  width: 100%; padding: 11px 13px; border: 1.5px solid var(--border); border-radius: 10px;
+  font-size: 14px; font-family: var(--font); color: var(--black);
+  background: var(--off); outline: none; transition: all 0.15s; -webkit-appearance: none; appearance: none;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--blue); background: var(--white); box-shadow: 0 0 0 3px rgba(0,119,252,0.1); }
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center; background-color: var(--off); padding-right: 36px; cursor: pointer;
+}
+textarea { resize: vertical; min-height: 88px; line-height: 1.6; }
+.slots { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+.slot {
+  display: flex; align-items: center; gap: 8px; padding: 10px 11px;
+  border: 1.5px solid var(--border); border-radius: 10px; cursor: pointer;
+  transition: all 0.12s; font-size: 13px; color: var(--gray); user-select: none; background: var(--off);
+}
+.slot:hover { border-color: var(--blue); color: var(--black); }
+.slot.on { border-color: var(--blue); background: rgba(0,119,252,0.06); color: var(--black); font-weight: 600; }
+.scheck { width: 16px; height: 16px; border-radius: 5px; border: 1.5px solid rgba(0,0,0,0.15); flex-shrink: 0; transition: all 0.12s; position: relative; background: white; }
 .slot.on .scheck { background: var(--blue); border-color: var(--blue); }
-.slot.on .scheck::after { content: ''; position: absolute; width: 6px; height: 6px; background: white; border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%,-50%); }
-.submt { width: 100%; background: var(--blue); color: white; border: none; border-radius: 100px; padding: 17px; font-size: 16px; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.2s; margin-top: 8px; letter-spacing: 0.2px; }
-.submt:hover { background: var(--deep); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,50,219,0.3); }
-.fnote { font-size: 12px; color: var(--gray); text-align: center; margin-top: 14px; line-height: 1.6; }
-.success { display: none; text-align: center; padding: 36px 16px; }
-.sicon { width: 64px; height: 64px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 26px; }
-.stitle { font-family: 'Instrument Serif', serif; font-size: 30px; margin-bottom: 10px; }
-.ssub2 { font-size: 15px; color: var(--gray); line-height: 1.7; margin-bottom: 24px; max-width: 460px; margin-left: auto; margin-right: auto; }
-.sback { background: none; border: 1.5px solid var(--border); border-radius: 100px; padding: 10px 24px; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: border-color 0.2s; color: var(--text); }
+.slot.on .scheck::after { content: ''; position: absolute; left: 4px; top: 2px; width: 5px; height: 8px; border: 2px solid white; border-top: none; border-left: none; transform: rotate(45deg); }
+.submt {
+  width: 100%; background: var(--blue); color: white; border: none; border-radius: 12px;
+  padding: 15px; font-size: 15px; font-weight: 700; font-family: var(--font);
+  cursor: pointer; transition: all 0.15s; margin-top: 6px;
+  box-shadow: 0 4px 16px rgba(0,119,252,0.22);
+}
+.submt:hover { background: var(--deep); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,119,252,0.32); }
+.fnote { font-size: 12px; color: var(--gray); text-align: center; margin-top: 10px; line-height: 1.6; }
+.success { display: none; text-align: center; padding: 40px 16px; }
+.sicon { width: 52px; height: 52px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+.sicon svg { width: 24px; height: 24px; stroke: white; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.stitle { font-size: 24px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; }
+.ssub2 { font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 24px; }
+.sback { background: none; border: 1.5px solid var(--border); border-radius: 10px; padding: 10px 20px; font-size: 13px; font-family: var(--font); cursor: pointer; color: var(--black); font-weight: 600; transition: all 0.15s; }
 .sback:hover { border-color: var(--black); }
 
 /* FOOTER */
-footer { background: var(--black); padding: 44px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-.flogo { font-size: 22px; font-weight: 700; color: var(--blue); }
-.fline { font-size: 13px; color: rgba(255,255,255,0.3); }
+footer { background: var(--black); padding: 36px 20px; }
+.footer-inner { max-width: 480px; margin: 0 auto; }
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 28px; flex-wrap: wrap; gap: 20px; }
+.footer-logo { font-size: 20px; font-weight: 800; color: var(--blue); margin-bottom: 5px; }
+.footer-tagline { font-size: 12px; color: rgba(255,255,255,0.28); line-height: 1.6; max-width: 180px; }
+.footer-links { display: flex; flex-direction: column; gap: 8px; text-align: right; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; font-weight: 500; transition: color 0.15s; }
+.footer-links a:hover { color: white; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.18); }
+.footer-live { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--green); font-weight: 600; }
+.footer-live::before { content: ''; width: 6px; height: 6px; background: var(--green); border-radius: 50%; box-shadow: 0 0 6px var(--green); animation: pulse 2s infinite; }
 
-/* RESPONSIVE */
-@media (max-width: 860px) {
-  nav { padding: 16px 20px; }
-  .nav-links { display: none; }
-  .hero { padding: 96px 20px 60px; }
-  .hero-inner { grid-template-columns: 1fr; gap: 44px; }
-  .section { padding: 60px 20px; }
-  .steps { grid-template-columns: 1fr; background: none; gap: 12px; }
-  .step { border-radius: 18px; border: 1px solid var(--border); }
-  .split { padding: 56px 20px; }
-  .split-inner { grid-template-columns: 1fr; }
-  .sblock { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 28px 20px; }
-  .sblock:last-child { border-bottom: none; }
-  .trust { padding: 44px 20px; }
-  .trust-row { grid-template-columns: repeat(2,1fr); gap: 24px; }
-  .form-section { padding: 60px 20px; }
-  .fcard { padding: 28px 20px; border-radius: 20px; }
-  .frow { grid-template-columns: 1fr; }
-  .slots { grid-template-columns: 1fr; }
-  footer { padding: 32px 20px; flex-direction: column; text-align: center; }
+/* DESKTOP */
+@media (min-width: 640px) {
+  nav { padding: 0 32px; }
+  .nav-links a { display: inline-block; }
+  .hero { padding: 100px 32px 64px; }
+  .hero-btns { flex-direction: row; justify-content: center; }
+  .btn-blue, .btn-ghost { width: auto; max-width: none; }
+  .split-bar { padding: 0 32px 48px; }
+  .section { padding: 64px 32px; }
+  .reseller-wrap { padding: 0 32px 64px; }
+  .reseller-strip { flex-direction: row; align-items: center; justify-content: space-between; gap: 24px; }
+  footer { padding: 44px 32px; }
 }
 </style>
 </head>
@@ -153,10 +253,12 @@ footer { background: var(--black); padding: 44px 48px; display: flex; align-item
 
 <nav>
   <a href="#" class="nav-logo">Cluttr.</a>
-  <div class="nav-links">
-    <a href="#how">How it works</a>
-    <a href="#register">Register interest</a>
-    <a href="https://calendly.com/cluttrstartup/30min" target="_blank" class="nav-cta">Book a collection →</a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#register">Register</a>
+    </div>
+    <a href="https://calendly.com/cluttrstartup/30min" target="_blank" class="nav-cta">Book collection →</a>
   </div>
 </nav>
 
@@ -164,367 +266,279 @@ footer { background: var(--black); padding: 44px 48px; display: flex; align-item
 <section class="hero">
   <div class="orb orb1"></div>
   <div class="orb orb2"></div>
-  <div class="hero-inner">
-    <div>
-      <div class="hero-pill"><span class="pdot"></span>Now taking registrations — Christchurch, NZ</div>
-      <h1>Your clutter.<br>Someone else's <em>hustle.</em><br>Your cash.</h1>
-      <p class="hero-sub">Cluttr connects you with vetted local resellers who collect, list, and sell your unwanted items. You tell us what you've got. They handle everything. You get paid.</p>
-      <div class="hero-btns">
-        <a href="#register" class="btn-blue">Register interest →</a>
-        <a href="https://calendly.com/cluttrstartup/30min" target="_blank" class="btn-ghost">Book a collection time →</a>
-      </div>
-    </div>
-    <div class="hero-cards">
-      <div class="hcard">
-        <div class="hcard-icon">💰</div>
-        <div><div class="hcard-val">50%</div><div class="hcard-lbl">You keep — zero effort required</div></div>
-      </div>
-      <div class="hcard">
-        <div class="hcard-icon">📦</div>
-        <div><div class="hcard-val">$600</div><div class="hcard-lbl">First pilot sale — all 3 parties paid</div></div>
-      </div>
-      <div class="hcard">
-        <div class="hcard-icon">🤝</div>
-        <div><div class="hcard-val">0</div><div class="hcard-lbl">Strangers you need to deal with yourself</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="section" id="how">
-  <div class="section-inner">
-    <div class="eyebrow">How it works</div>
-    <h2 class="sh">Three steps. <em>Zero hassle.</em></h2>
-    <p class="ssub">From your spare room to sold — without writing a single listing or meeting a single buyer.</p>
-    <div class="steps">
-      <div class="step">
-        <div class="step-n">01</div>
-        <div class="step-icon">📝</div>
-        <div class="step-title">Register your items</div>
-        <p class="step-desc">Fill out the form below. Tell us roughly what you have, your area of Christchurch, and when suits you. No perfect photos or descriptions needed at this stage.</p>
-      </div>
-      <div class="step">
-        <div class="step-n">02</div>
-        <div class="step-icon">🤝</div>
-        <div class="step-title">We match your reseller</div>
-        <p class="step-desc">A vetted Cluttr reseller is matched to your collection. They contact you, arrange a collection time that works, then handle all the listing, selling, and buyer communications.</p>
-      </div>
-      <div class="step">
-        <div class="step-n">03</div>
-        <div class="step-icon">💸</div>
-        <div class="step-title">You get paid</div>
-        <p class="step-desc">When your items sell, you receive 50% of the total sale value. No Trade Me listings, no haggling with strangers, no wasted weekends. Just money.</p>
-      </div>
+  <div class="hero-content">
+    <div class="live-pill"><div class="live-dot"></div>Live now in Christchurch, NZ</div>
+    <h1>Your clutter.<br><span class="accent">Someone else's</span><br>hustle.</h1>
+    <p class="hero-sub">Cluttr connects you with vetted local resellers who collect and sell your stuff. You get half. Zero effort.</p>
+    <div class="hero-btns">
+      <a href="#register" class="btn-blue">Register your interest →</a>
+      <a href="https://calendly.com/cluttrstartup/30min" target="_blank" class="btn-ghost">Book a collection</a>
     </div>
   </div>
 </section>
 
 <!-- SPLIT -->
-<div class="split">
+<div class="split-bar">
   <div class="split-inner">
-    <div class="sblock">
-      <div class="spct" style="color:var(--blue);">50%</div>
-      <div class="swho">You — the owner</div>
-      <div class="sdesc">Half the sale value, straight to you. Without a single listing, negotiation, or stranger at your door.</div>
+    <div class="s-block">
+      <div class="s-pct" style="color:var(--blue);">50%</div>
+      <div class="s-who">You keep</div>
+      <div class="s-desc">Zero effort</div>
     </div>
-    <div class="sblock">
-      <div class="spct" style="color:#7BAEFF;">35%</div>
-      <div class="swho">Your reseller</div>
-      <div class="sdesc">They collect, photograph, list, and sell. They earn for the effort — and they know exactly what they're doing.</div>
+    <div class="s-block">
+      <div class="s-pct" style="color:#7BAEFF;">35%</div>
+      <div class="s-who">Reseller</div>
+      <div class="s-desc">Does the work</div>
     </div>
-    <div class="sblock">
-      <div class="spct" style="color:rgba(255,255,255,0.22);">15%</div>
-      <div class="swho">Cluttr</div>
-      <div class="sdesc">Our platform fee covers matching, payment processing, reseller vetting, and the trust infrastructure behind it all.</div>
+    <div class="s-block">
+      <div class="s-pct" style="color:rgba(255,255,255,0.22);">15%</div>
+      <div class="s-who">Cluttr</div>
+      <div class="s-desc">Platform fee</div>
     </div>
   </div>
 </div>
 
-<!-- TRUST -->
-<div class="trust">
-  <div class="trust-row">
-    <div><div class="tval">$600</div><div class="tlbl">First pilot sale,<br>fully validated</div></div>
-    <div><div class="tval">3/3</div><div class="tlbl">Parties satisfied<br>in pilot transaction</div></div>
-    <div><div class="tval">ChCh</div><div class="tlbl">Launching in<br>Christchurch first</div></div>
-    <div><div class="tval">0</div><div class="tlbl">Listings you need<br>to write yourself</div></div>
+<!-- HOW IT WORKS -->
+<div class="how-bg" id="how">
+  <div class="section">
+    <div class="section-inner">
+      <div class="eyebrow">How it works</div>
+      <h2 class="section-title">Three steps.<br>Zero hassle.</h2>
+      <p class="section-sub">From your spare room to sold — without writing a single listing.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
+          </div>
+          <div>
+            <div class="step-num">01 — Register</div>
+            <div class="step-title">Tell us what you've got</div>
+            <p class="step-desc">Fill out the form below with a rough description of your items, your suburb, and when suits you. No perfect descriptions needed.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <div class="step-num">02 — Match</div>
+            <div class="step-title">We find your reseller</div>
+            <p class="step-desc">A vetted local Cluttr reseller is matched to your job. They contact you, arrange a time, and handle everything — listing, photos, buyers, all of it.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-icon-wrap">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div>
+            <div class="step-num">03 — Get paid</div>
+            <div class="step-title">Money hits your account</div>
+            <p class="step-desc">When your items sell, 50% of the total goes straight to you. No Trade Me, no strangers, no wasted weekends.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHO -->
+<div class="section">
+  <div class="section-inner">
+    <div class="eyebrow">Who it's for</div>
+    <h2 class="section-title">Built for life's<br>big moments.</h2>
+    <div class="who-grid">
+      <div class="who-card">
+        <div class="who-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="who-title">Downsizing</div>
+        <div class="who-sub">Moving smaller? We clear the rest.</div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="who-title">Deceased estates</div>
+        <div class="who-sub">We make the practical part easy.</div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </div>
+        <div class="who-title">Relocating</div>
+        <div class="who-sub">Clearing a home fast before a move.</div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">
+          <svg viewBox="0 0 24 24"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+        </div>
+        <div class="who-title">General clutter</div>
+        <div class="who-sub">Just too much stuff collecting dust.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESELLER -->
+<div class="reseller-wrap">
+  <div class="reseller-strip">
+    <div>
+      <h3>Want to earn<br>as a reseller?</h3>
+      <p style="margin-top:8px;">Join the network. You collect, sell, and keep 35% of everything. Flexible and local.</p>
+    </div>
+    <a href="mailto:hello@cluttr.co.nz" class="btn-white-sm">Get in touch →</a>
   </div>
 </div>
 
 <!-- FORM -->
-<section class="form-section" id="register">
-  <div class="form-wrap">
-    <div class="form-center">
-      <div class="eyebrow">Register your interest</div>
-      <h2 class="sh" style="margin-bottom:8px;">Ready to <em>clear it out?</em></h2>
-      <p style="font-size:16px;color:var(--gray);margin-bottom:0;line-height:1.7;max-width:480px;margin:0 auto;">Tell us what you've got and when works for you. We'll be in touch within 48 hours.</p>
-    </div>
-
-    <div class="fcard" style="margin-top:36px;">
-      <div id="form-inner">
-        <h3 class="ftitle">Register to <em>declutter</em></h3>
-        <p class="fsub">A few quick details and we'll match you with a local Cluttr reseller. No commitment — just interest.</p>
-
-        <div class="frow">
-          <div><label>First name <span class="req">*</span></label><input type="text" id="f1" placeholder="Sarah" autocomplete="given-name"></div>
-          <div><label>Last name <span class="req">*</span></label><input type="text" id="f2" placeholder="Johnson" autocomplete="family-name"></div>
-        </div>
-        <div class="frow">
-          <div><label>Email address <span class="req">*</span></label><input type="email" id="f3" placeholder="sarah@email.com" autocomplete="email"></div>
-          <div><label>Phone number</label><input type="tel" id="f4" placeholder="021 000 0000" autocomplete="tel"></div>
-        </div>
-
-        <div class="fg">
-          <label>Your area in Christchurch <span class="req">*</span></label>
-          <select id="f5">
-            <option value="">Select your suburb or area...</option>
-            <optgroup label="─── Central City">
-              <option>Christchurch Central</option>
-              <option>Cathedral Square area</option>
-            </optgroup>
-            <optgroup label="─── Inner Suburbs">
-              <option>Addington</option>
-              <option>Edgeware</option>
-              <option>Linwood</option>
-              <option>Richmond</option>
-              <option>Spreydon</option>
-              <option>St Albans</option>
-              <option>Sydenham</option>
-              <option>Waltham</option>
-            </optgroup>
-            <optgroup label="─── North & Northwest">
-              <option>Bishopdale</option>
-              <option>Bryndwr</option>
-              <option>Burnside</option>
-              <option>Casebrook</option>
-              <option>Fendalton</option>
-              <option>Harewood</option>
-              <option>Merivale</option>
-              <option>Northcote</option>
-              <option>Papanui</option>
-              <option>Redwood</option>
-              <option>Strowan</option>
-              <option>Mairehau</option>
-            </optgroup>
-            <optgroup label="─── West">
-              <option>Halswell</option>
-              <option>Hornby</option>
-              <option>Islington</option>
-              <option>Riccarton</option>
-              <option>Sockburn</option>
-              <option>Upper Riccarton</option>
-              <option>Westmorland</option>
-              <option>Wigram</option>
-            </optgroup>
-            <optgroup label="─── East">
-              <option>Aranui</option>
-              <option>Avondale</option>
-              <option>Avonside</option>
-              <option>Bexley</option>
-              <option>Bromley</option>
-              <option>Burwood</option>
-              <option>New Brighton</option>
-              <option>Parklands</option>
-              <option>Shirley</option>
-              <option>South New Brighton</option>
-              <option>Wainoni</option>
-            </optgroup>
-            <optgroup label="─── South">
-              <option>Beckenham</option>
-              <option>Cashmere</option>
-              <option>Hoon Hay</option>
-              <option>Hillmorton</option>
-              <option>Huntsbury</option>
-              <option>Opawa</option>
-              <option>Prebbleton</option>
-              <option>St Martins</option>
-            </optgroup>
-            <optgroup label="─── Hills & Banks Peninsula">
-              <option>Governors Bay</option>
-              <option>Heathcote Valley</option>
-              <option>Lyttelton</option>
-              <option>Redcliffs</option>
-              <option>Sumner</option>
-              <option>Taylor's Mistake</option>
-            </optgroup>
-            <optgroup label="─── Greater Christchurch">
-              <option>Kaiapoi</option>
-              <option>Lincoln</option>
-              <option>Pegasus</option>
-              <option>Rangiora</option>
-              <option>Rolleston</option>
-              <option>Southbrook</option>
-              <option>Woodend</option>
-            </optgroup>
-            <optgroup label="─── Other">
-              <option>Other — I'll add details below</option>
-            </optgroup>
-          </select>
-        </div>
-
-        <div class="fg">
-          <label>What are you looking to let go of? <span class="req">*</span></label>
-          <textarea id="f6" placeholder="e.g. Two leather sofas, a dining table and 6 chairs, some framed artwork, boxes of books, a vintage record player... Rough descriptions are totally fine — no need to list every item individually. The more detail the better!"></textarea>
-        </div>
-
-        <div class="fg">
-          <label>Why are you decluttering? <span style="font-weight:400;color:var(--gray);">(optional)</span></label>
-          <select id="f7">
-            <option value="">Select a reason...</option>
-            <option>Downsizing / moving to a smaller home</option>
-            <option>Moving into aged care</option>
-            <option>Managing a deceased estate</option>
-            <option>Relocating internationally</option>
-            <option>Relocating domestically</option>
-            <option>Divorce or separation</option>
-            <option>General declutter — just too much stuff!</option>
-            <option>Renovating or redecorating</option>
-            <option>Prefer not to say</option>
-            <option>Other</option>
-          </select>
-        </div>
-
-        <div class="fg">
-          <label>When can a reseller collect? <span class="req">*</span> — tick everything that works</label>
-          <div class="slots" id="o-slots">
-            <div class="slot" onclick="ts(this)"><div class="scheck"></div>Weekday evenings (5pm–10pm)</div>
-            <div class="slot" onclick="ts(this)"><div class="scheck"></div>Saturday afternoon (12pm–4pm)</div>
-            <div class="slot" onclick="ts(this)"><div class="scheck"></div>Sunday morning (9am–12pm)</div>
-            <div class="slot" onclick="ts(this)"><div class="scheck"></div>Flexible — contact me to arrange</div>
+<div class="form-bg section" id="register">
+  <div class="section-inner">
+    <div class="eyebrow">Get started</div>
+    <h2 class="section-title">Ready to<br>clear it out?</h2>
+    <p class="section-sub">We'll match you with a local reseller within 48 hours.</p>
+    <div class="fcard">
+      <div class="fcard-head">
+        <h3>Register to declutter</h3>
+        <p>No commitment — just tell us what you've got.</p>
+      </div>
+      <div class="fcard-body">
+        <div id="form-inner">
+          <div class="frow">
+            <div><label>First name <span class="req">*</span></label><input type="text" id="f1" placeholder="Sarah" autocomplete="given-name"></div>
+            <div><label>Last name <span class="req">*</span></label><input type="text" id="f2" placeholder="Johnson" autocomplete="family-name"></div>
           </div>
+          <div class="frow">
+            <div><label>Email <span class="req">*</span></label><input type="email" id="f3" placeholder="sarah@email.com" autocomplete="email"></div>
+            <div><label>Phone</label><input type="tel" id="f4" placeholder="021 000 0000" autocomplete="tel"></div>
+          </div>
+          <div class="fg">
+            <label>Your suburb <span class="req">*</span></label>
+            <select id="f5">
+              <option value="">Select your suburb...</option>
+              <optgroup label="Central City"><option>Christchurch Central</option><option>Cathedral Square area</option></optgroup>
+              <optgroup label="Inner Suburbs"><option>Addington</option><option>Edgeware</option><option>Linwood</option><option>Richmond</option><option>Spreydon</option><option>St Albans</option><option>Sydenham</option><option>Waltham</option></optgroup>
+              <optgroup label="North & Northwest"><option>Bishopdale</option><option>Bryndwr</option><option>Burnside</option><option>Casebrook</option><option>Fendalton</option><option>Harewood</option><option>Merivale</option><option>Northcote</option><option>Papanui</option><option>Redwood</option><option>Strowan</option><option>Mairehau</option></optgroup>
+              <optgroup label="West"><option>Halswell</option><option>Hornby</option><option>Islington</option><option>Riccarton</option><option>Sockburn</option><option>Upper Riccarton</option><option>Westmorland</option><option>Wigram</option></optgroup>
+              <optgroup label="East"><option>Aranui</option><option>Avondale</option><option>Avonside</option><option>Bexley</option><option>Bromley</option><option>Burwood</option><option>New Brighton</option><option>Parklands</option><option>Shirley</option><option>South New Brighton</option><option>Wainoni</option></optgroup>
+              <optgroup label="South"><option>Beckenham</option><option>Cashmere</option><option>Hoon Hay</option><option>Hillmorton</option><option>Huntsbury</option><option>Opawa</option><option>Prebbleton</option><option>St Martins</option></optgroup>
+              <optgroup label="Hills & Banks Peninsula"><option>Governors Bay</option><option>Heathcote Valley</option><option>Lyttelton</option><option>Redcliffs</option><option>Sumner</option><option>Taylor's Mistake</option></optgroup>
+              <optgroup label="Greater Christchurch"><option>Kaiapoi</option><option>Lincoln</option><option>Pegasus</option><option>Rangiora</option><option>Rolleston</option><option>Southbrook</option><option>Woodend</option></optgroup>
+              <optgroup label="Other"><option>Other — I'll add details below</option></optgroup>
+            </select>
+          </div>
+          <div class="fg">
+            <label>What are you clearing out? <span class="req">*</span></label>
+            <textarea id="f6" placeholder="e.g. Two sofas, dining table and chairs, boxes of books... rough is totally fine!"></textarea>
+          </div>
+          <div class="fg">
+            <label>Why are you decluttering? <span style="font-weight:500;color:var(--gray)">(optional)</span></label>
+            <select id="f7">
+              <option value="">Select a reason...</option>
+              <option>Downsizing / moving to a smaller home</option>
+              <option>Moving into aged care</option>
+              <option>Managing a deceased estate</option>
+              <option>Relocating internationally</option>
+              <option>Relocating domestically</option>
+              <option>Divorce or separation</option>
+              <option>General declutter — just too much stuff!</option>
+              <option>Renovating or redecorating</option>
+              <option>Prefer not to say</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>When works for collection? <span class="req">*</span></label>
+            <div class="slots" id="o-slots">
+              <div class="slot" onclick="ts(this)"><div class="scheck"></div>Weekday evenings</div>
+              <div class="slot" onclick="ts(this)"><div class="scheck"></div>Saturday afternoon</div>
+              <div class="slot" onclick="ts(this)"><div class="scheck"></div>Sunday morning</div>
+              <div class="slot" onclick="ts(this)"><div class="scheck"></div>Flexible — just call</div>
+            </div>
+          </div>
+          <div class="fg">
+            <label>Anything else? <span style="font-weight:500;color:var(--gray)">(optional)</span></label>
+            <textarea id="f8" style="min-height:70px;" placeholder="Access notes, parking, anything large or heavy..."></textarea>
+          </div>
+          <button class="submt" onclick="submitForm()">Register my interest →</button>
+          <p class="fnote">No commitment. We'll reply within 48 hours. Your details stay private.</p>
         </div>
-
-        <div class="fg">
-          <label>Anything else we should know? <span style="font-weight:400;color:var(--gray);">(optional)</span></label>
-          <textarea id="f8" style="min-height:80px;" placeholder="Access notes, parking situation, number of items, anything particularly large or heavy, special circumstances..."></textarea>
+        <div class="success" id="form-success">
+          <div class="sicon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="stitle">You're on the list!</div>
+          <p class="ssub2">We've got your details and will be in touch within 48 hours to match you with a local Cluttr reseller.</p>
+          <a href="https://calendly.com/cluttrstartup/30min" target="_blank" class="submt" style="display:inline-block;text-decoration:none;padding:15px 28px;width:auto;margin-bottom:12px;">Book your collection time →</a><br>
+          <button class="sback" onclick="resetForm()">Submit another</button>
         </div>
-
-        <button class="submt" onclick="submitForm()">Register my interest →</button>
-        <p class="fnote">No commitment required. We'll contact you within 48 hours to discuss next steps.<br>Your details are kept completely private and never shared.</p>
-      </div>
-
-      <div class="success" id="form-success">
-        <div class="sicon">✓</div>
-        <div class="stitle">You're on the list!</div>
-        <p class="ssub2">Thanks — we've got your details and will be in touch within 48 hours to match you with a local Cluttr reseller and arrange everything.<br><br>Start thinking about everything you'd love to clear out. The more the merrier. 📦</p>
-        <a href="https://calendly.com/cluttrstartup/30min" target="_blank" class="submt" style="display:inline-block;text-decoration:none;width:auto;padding:17px 40px;margin-bottom:12px;">Book your collection time →</a>
-        <br><button class="sback" onclick="resetForm()">Submit another enquiry</button>
       </div>
     </div>
-
-    <!-- Reseller soft link -->
-    <p style="text-align:center;margin-top:28px;font-size:14px;color:var(--gray);">
-      Want to earn as a reseller instead?
-      <a href="mailto:hello@cluttr.co.nz" style="color:var(--blue);font-weight:500;text-decoration:none;">Get in touch →</a>
-    </p>
+    <p style="text-align:center;margin-top:18px;font-size:14px;color:var(--gray);">Want to earn as a reseller? <a href="mailto:hello@cluttr.co.nz" style="color:var(--blue);font-weight:600;text-decoration:none;">Get in touch →</a></p>
   </div>
-</section>
+</div>
 
+<!-- FOOTER -->
 <footer>
-  <div class="flogo">Cluttr.</div>
-  <div class="fline">Building the new way to deal with clutter — Christchurch, New Zealand.</div>
-  <div class="fline">© 2026 Cluttr</div>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Cluttr.</div>
+        <div class="footer-tagline">Building the new way to deal with clutter — Christchurch, NZ.</div>
+      </div>
+      <div class="footer-links">
+        <a href="#how">How it works</a>
+        <a href="#register">Register interest</a>
+        <a href="https://calendly.com/cluttrstartup/30min" target="_blank">Book a collection</a>
+        <a href="mailto:hello@cluttr.co.nz">hello@cluttr.co.nz</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Cluttr. All rights reserved.</div>
+      <div class="footer-live">Live in Christchurch</div>
+    </div>
+  </div>
 </footer>
 
 <script>
 function ts(el) { el.classList.toggle('on'); }
-
 function err(id) {
   const el = document.getElementById(id);
-  el.style.borderColor = '#EF4444';
-  el.style.boxShadow = '0 0 0 4px rgba(239,68,68,0.1)';
-  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  el.focus();
+  el.style.borderColor = '#EF4444'; el.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.1)';
+  el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.focus();
   setTimeout(() => { el.style.borderColor = ''; el.style.boxShadow = ''; }, 2800);
 }
-
 async function submitForm() {
-  const f1 = document.getElementById('f1').value.trim();
-  const f2 = document.getElementById('f2').value.trim();
-  const f3 = document.getElementById('f3').value.trim();
-  const f4 = document.getElementById('f4').value.trim();
-  const f5 = document.getElementById('f5').value;
-  const f6 = document.getElementById('f6').value.trim();
-  const f7 = document.getElementById('f7').value;
-  const f8 = document.getElementById('f8').value.trim();
-
-  if (!f1) { err('f1'); return; }
-  if (!f3 || !f3.includes('@')) { err('f3'); return; }
-  if (!f5) { err('f5'); return; }
-  if (!f6) { err('f6'); return; }
-
-  const slots = [...document.querySelectorAll('#o-slots .slot.on')]
-    .map(el => el.textContent.trim()).join(', ') || 'None selected';
-
-  const btn = document.querySelector('.submt');
-  btn.textContent = 'Sending...';
-  btn.disabled = true;
-
-  // -------------------------------------------------------
-  // FORMSPREE SETUP (free — takes 2 minutes):
-  // 1. Go to https://formspree.io and sign up free
-  // 2. Create a new form, copy the form ID (looks like xblablah)
-  // 3. Replace YOUR_FORM_ID below with your actual ID
-  // -------------------------------------------------------
-  const FORMSPREE_ID = 'YOUR_FORM_ID';
-
+  const f1=document.getElementById('f1').value.trim(), f2=document.getElementById('f2').value.trim(),
+        f3=document.getElementById('f3').value.trim(), f4=document.getElementById('f4').value.trim(),
+        f5=document.getElementById('f5').value, f6=document.getElementById('f6').value.trim(),
+        f7=document.getElementById('f7').value, f8=document.getElementById('f8').value.trim();
+  if (!f1){err('f1');return;} if (!f3||!f3.includes('@')){err('f3');return;}
+  if (!f5){err('f5');return;} if (!f6){err('f6');return;}
+  const slots=[...document.querySelectorAll('#o-slots .slot.on')].map(el=>el.textContent.trim()).join(', ')||'None selected';
+  const btn=document.querySelector('.submt'); btn.textContent='Sending...'; btn.disabled=true;
+  const FORMSPREE_ID='YOUR_FORM_ID';
   try {
-    const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        'First name': f1,
-        'Last name': f2,
-        'Email': f3,
-        'Phone': f4 || 'Not provided',
-        'Suburb': f5,
-        'Items to declutter': f6,
-        'Reason for decluttering': f7 || 'Not provided',
-        'Available time slots': slots,
-        'Additional notes': f8 || 'None'
-      })
-    });
-
-    if (res.ok || FORMSPREE_ID === 'YOUR_FORM_ID') {
-      document.getElementById('form-inner').style.display = 'none';
-      document.getElementById('form-success').style.display = 'block';
-      window.scrollTo({ top: document.getElementById('register').offsetTop - 80, behavior: 'smooth' });
-    } else {
-      alert('Something went wrong. Please email hello@cluttr.co.nz directly.');
-      btn.textContent = 'Register my interest →';
-      btn.disabled = false;
-    }
-  } catch(e) {
-    // Show success anyway if network error (Formspree not yet configured)
-    document.getElementById('form-inner').style.display = 'none';
-    document.getElementById('form-success').style.display = 'block';
-    window.scrollTo({ top: document.getElementById('register').offsetTop - 80, behavior: 'smooth' });
-  }
+    const res=await fetch('https://formspree.io/f/'+FORMSPREE_ID,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({'First name':f1,'Last name':f2,'Email':f3,'Phone':f4||'Not provided','Suburb':f5,'Items':f6,'Reason':f7||'Not provided','Slots':slots,'Notes':f8||'None'})});
+    if(res.ok||FORMSPREE_ID==='YOUR_FORM_ID'){showSuccess();}
+    else{alert('Something went wrong. Email hello@cluttr.co.nz directly.');btn.textContent='Register my interest →';btn.disabled=false;}
+  } catch(e){showSuccess();}
 }
-
+function showSuccess() {
+  document.getElementById('form-inner').style.display='none';
+  document.getElementById('form-success').style.display='block';
+  window.scrollTo({top:document.getElementById('register').offsetTop-70,behavior:'smooth'});
+}
 function resetForm() {
-  ['f1','f2','f3','f4','f6','f8'].forEach(id => document.getElementById(id).value = '');
-  ['f5','f7'].forEach(id => document.getElementById(id).value = '');
-  document.querySelectorAll('#o-slots .slot').forEach(el => el.classList.remove('on'));
-  document.getElementById('form-inner').style.display = 'block';
-  document.getElementById('form-success').style.display = 'none';
+  ['f1','f2','f3','f4','f6','f8'].forEach(id=>document.getElementById(id).value='');
+  ['f5','f7'].forEach(id=>document.getElementById(id).value='');
+  document.querySelectorAll('#o-slots .slot').forEach(el=>el.classList.remove('on'));
+  document.getElementById('form-inner').style.display='block';
+  document.getElementById('form-success').style.display='none';
 }
-
-// Scroll reveal
-const obs = new IntersectionObserver(entries => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      e.target.style.animation = `fadeUp 0.55s ${i * 0.07}s ease both`;
-      e.target.style.opacity = '1';
-      obs.unobserve(e.target);
-    }
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){e.target.style.animation=`fadeUp 0.45s ${i*0.05}s ease both`;e.target.style.opacity='1';obs.unobserve(e.target);}
   });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.step, .hcard, .sblock, .tval').forEach(el => {
-  el.style.opacity = '0';
-  obs.observe(el);
-});
+},{threshold:0.12});
+document.querySelectorAll('.step,.who-card,.s-block').forEach(el=>{el.style.opacity='0';obs.observe(el);});
 </script>
 </body>
 </html>
