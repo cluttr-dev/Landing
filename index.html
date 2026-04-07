@@ -499,45 +499,107 @@ footer { background: var(--black); padding: 36px 20px; }
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-document.addEventListener('DOMContentLoaded', function() {
+<script>
+// Slot toggles — attached directly, no DOMContentLoaded needed
+window.onload = function() {
   document.querySelectorAll('#o-slots .slot').forEach(function(el) {
-    el.addEventListener('click', function() { this.classList.toggle('on'); });
+    el.addEventListener('click', function() {
+      this.classList.toggle('on');
+    });
   });
-});
+};
+
 function err(id) {
-  const el = document.getElementById(id);
-  el.style.borderColor = '#EF4444'; el.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.1)';
-  el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.focus();
-  setTimeout(() => { el.style.borderColor = ''; el.style.boxShadow = ''; }, 2800);
+  var el = document.getElementById(id);
+  el.style.borderColor = '#EF4444';
+  el.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.1)';
+  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  el.focus();
+  setTimeout(function() { el.style.borderColor = ''; el.style.boxShadow = ''; }, 2800);
 }
+
 async function submitForm() {
-  const f1=document.getElementById('f1').value.trim(), f2=document.getElementById('f2').value.trim(),
-        f3=document.getElementById('f3').value.trim(), f4=document.getElementById('f4').value.trim(),
-        f5=document.getElementById('f5').value, f6=document.getElementById('f6').value.trim(),
-        f7=document.getElementById('f7').value, f8=document.getElementById('f8').value.trim();
-  if (!f1){err('f1');return;} if (!f3||!f3.includes('@')){err('f3');return;}
-  if (!f5){err('f5');return;} if (!f6){err('f6');return;}
-  const slots=[...document.querySelectorAll('#o-slots .slot.on')].map(el=>el.textContent.trim()).join(', ')||'None selected';
-  const btn=document.querySelector('.submt'); btn.textContent='Sending...'; btn.disabled=true;
-  const FORMSPREE_ID='YOUR_FORM_ID';
+  var f1 = document.getElementById('f1').value.trim();
+  var f2 = document.getElementById('f2').value.trim();
+  var f3 = document.getElementById('f3').value.trim();
+  var f4 = document.getElementById('f4').value.trim();
+  var f5 = document.getElementById('f5').value;
+  var f6 = document.getElementById('f6').value.trim();
+  var f7 = document.getElementById('f7').value;
+  var f8 = document.getElementById('f8').value.trim();
+
+  if (!f1) { err('f1'); return; }
+  if (!f3 || !f3.includes('@')) { err('f3'); return; }
+  if (!f5) { err('f5'); return; }
+  if (!f6) { err('f6'); return; }
+
+  var selectedSlots = [];
+  document.querySelectorAll('#o-slots .slot.on').forEach(function(el) {
+    selectedSlots.push(el.textContent.trim());
+  });
+  var slots = selectedSlots.length > 0 ? selectedSlots.join(', ') : 'None selected';
+
+  var btn = document.querySelector('.submt');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
   try {
-    const res=await fetch('https://formspree.io/f/'+FORMSPREE_ID,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({'First name':f1,'Last name':f2,'Email':f3,'Phone':f4||'Not provided','Suburb':f5,'Items':f6,'Reason':f7||'Not provided','Slots':slots,'Notes':f8||'None'})});
-    if(res.ok||FORMSPREE_ID==='YOUR_FORM_ID'){showSuccess();}
-    else{alert('Something went wrong. Email hello@cluttr.co.nz directly.');btn.textContent='Register my interest →';btn.disabled=false;}
-  } catch(e){showSuccess();}
+    var res = await fetch('https://formspree.io/f/mjgplyqe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        'First name': f1,
+        'Last name': f2,
+        'Email': f3,
+        'Phone': f4 || 'Not provided',
+        'Suburb': f5,
+        'Items': f6,
+        'Reason': f7 || 'Not provided',
+        'Available slots': slots,
+        'Notes': f8 || 'None'
+      })
+    });
+    if (res.ok) {
+      showSuccess();
+    } else {
+      alert('Something went wrong. Please email hello@cluttr.co.nz directly.');
+      btn.textContent = 'Register my interest →';
+      btn.disabled = false;
+    }
+  } catch(e) {
+    alert('Something went wrong. Please email hello@cluttr.co.nz directly.');
+    btn.textContent = 'Register my interest →';
+    btn.disabled = false;
+  }
 }
+
 function showSuccess() {
-  document.getElementById('form-inner').style.display='none';
-  document.getElementById('form-success').style.display='block';
-  window.scrollTo({top:document.getElementById('register').offsetTop-70,behavior:'smooth'});
+  document.getElementById('form-inner').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+  window.scrollTo({ top: document.getElementById('register').offsetTop - 70, behavior: 'smooth' });
 }
+
 function resetForm() {
-  ['f1','f2','f3','f4','f6','f8'].forEach(id=>document.getElementById(id).value='');
-  ['f5','f7'].forEach(id=>document.getElementById(id).value='');
-  document.querySelectorAll('#o-slots .slot').forEach(el=>el.classList.remove('on'));
-  document.getElementById('form-inner').style.display='block';
-  document.getElementById('form-success').style.display='none';
+  ['f1','f2','f3','f4','f6','f8'].forEach(function(id) { document.getElementById(id).value = ''; });
+  ['f5','f7'].forEach(function(id) { document.getElementById(id).value = ''; });
+  document.querySelectorAll('#o-slots .slot').forEach(function(el) { el.classList.remove('on'); });
+  document.getElementById('form-inner').style.display = 'block';
+  document.getElementById('form-success').style.display = 'none';
 }
-const obs=new IntersectionObserver(entries=>{
-  en
+// scroll reveal
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e, i) {
+    if (e.isIntersecting) {
+      e.target.style.animation = 'fadeUp 0.45s ' + (i * 0.05) + 's ease both';
+      e.target.style.opacity = '1';
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.step, .who-card, .s-block').forEach(function(el) {
+  el.style.opacity = '0';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
