@@ -201,10 +201,11 @@ textarea { resize: vertical; min-height: 88px; line-height: 1.6; }
   transition: all 0.12s; font-size: 13px; color: var(--gray); user-select: none; background: var(--off);
 }
 .slot:hover { border-color: var(--blue); color: var(--black); }
-.slot.on { border-color: var(--blue); background: rgba(0,119,252,0.06); color: var(--black); font-weight: 600; }
+.slot input[type="checkbox"] { display: none; }
 .scheck { width: 16px; height: 16px; border-radius: 5px; border: 1.5px solid rgba(0,0,0,0.15); flex-shrink: 0; transition: all 0.12s; position: relative; background: white; }
-.slot.on .scheck { background: var(--blue); border-color: var(--blue); }
-.slot.on .scheck::after { content: ''; position: absolute; left: 4px; top: 2px; width: 5px; height: 8px; border: 2px solid white; border-top: none; border-left: none; transform: rotate(45deg); }
+.slot input[type="checkbox"]:checked ~ .scheck { background: var(--blue); border-color: var(--blue); }
+.slot input[type="checkbox"]:checked ~ .scheck::after { content: ''; position: absolute; left: 4px; top: 2px; width: 5px; height: 8px; border: 2px solid white; border-top: none; border-left: none; transform: rotate(45deg); }
+.slot:has(input:checked) { border-color: var(--blue); background: rgba(0,119,252,0.06); color: var(--black); font-weight: 600; }
 .submt {
   width: 100%; background: var(--blue); color: white; border: none; border-radius: 12px;
   padding: 15px; font-size: 15px; font-weight: 700; font-family: var(--font);
@@ -451,10 +452,10 @@ footer { background: var(--black); padding: 36px 20px; }
           <div class="fg">
             <label>When works for collection? <span class="req">*</span></label>
             <div class="slots" id="o-slots">
-              <div class="slot"><div class="scheck"></div>Weekday evenings</div>
-              <div class="slot"><div class="scheck"></div>Saturday afternoon</div>
-              <div class="slot"><div class="scheck"></div>Sunday morning</div>
-              <div class="slot"><div class="scheck"></div>Flexible — just call</div>
+              <label class="slot"><input type="checkbox" name="slots" value="Weekday evenings" style="display:none"><div class="scheck"></div>Weekday evenings</label>
+              <label class="slot"><input type="checkbox" name="slots" value="Saturday afternoon" style="display:none"><div class="scheck"></div>Saturday afternoon</label>
+              <label class="slot"><input type="checkbox" name="slots" value="Sunday morning" style="display:none"><div class="scheck"></div>Sunday morning</label>
+              <label class="slot"><input type="checkbox" name="slots" value="Flexible — just call" style="display:none"><div class="scheck"></div>Flexible — just call</label>
             </div>
           </div>
           <div class="fg">
@@ -534,8 +535,8 @@ async function submitForm() {
   if (!f6) { err('f6'); return; }
 
   var selectedSlots = [];
-  document.querySelectorAll('#o-slots .slot.on').forEach(function(el) {
-    selectedSlots.push(el.textContent.trim());
+  document.querySelectorAll('#o-slots input[type="checkbox"]:checked').forEach(function(el) {
+    selectedSlots.push(el.value);
   });
   var slots = selectedSlots.length > 0 ? selectedSlots.join(', ') : 'None selected';
 
@@ -582,7 +583,7 @@ function showSuccess() {
 function resetForm() {
   ['f1','f2','f3','f4','f6','f8'].forEach(function(id) { document.getElementById(id).value = ''; });
   ['f5','f7'].forEach(function(id) { document.getElementById(id).value = ''; });
-  document.querySelectorAll('#o-slots .slot').forEach(function(el) { el.classList.remove('on'); });
+  document.querySelectorAll('#o-slots input[type="checkbox"]').forEach(function(el) { el.checked = false; });
   document.getElementById('form-inner').style.display = 'block';
   document.getElementById('form-success').style.display = 'none';
 }
