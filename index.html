@@ -516,10 +516,10 @@ async function submitForm() {
   if (!f5){err('f5');return;} if (!f6){err('f6');return;}
   const slots=[...document.querySelectorAll('#o-slots .slot.on')].map(el=>el.textContent.trim()).join(', ')||'None selected';
   const btn=document.querySelector('.submt'); btn.textContent='Sending...'; btn.disabled=true;
-  const FORMSPREE_ID='YOUR_FORM_ID';
+  const FORMSPREE_ID='mjgplyqe';
   try {
     const res=await fetch('https://formspree.io/f/'+FORMSPREE_ID,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({'First name':f1,'Last name':f2,'Email':f3,'Phone':f4||'Not provided','Suburb':f5,'Items':f6,'Reason':f7||'Not provided','Slots':slots,'Notes':f8||'None'})});
-    if(res.ok||FORMSPREE_ID==='YOUR_FORM_ID'){showSuccess();}
+    if(res.ok||FORMSPREE_ID==='mjgplyqe'){showSuccess();}
     else{alert('Something went wrong. Email hello@cluttr.co.nz directly.');btn.textContent='Register my interest →';btn.disabled=false;}
   } catch(e){showSuccess();}
 }
