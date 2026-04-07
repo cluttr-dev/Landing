@@ -451,10 +451,10 @@ footer { background: var(--black); padding: 36px 20px; }
           <div class="fg">
             <label>When works for collection? <span class="req">*</span></label>
             <div class="slots" id="o-slots">
-              <div class="slot" onclick="ts(this)"><div class="scheck"></div>Weekday evenings</div>
-              <div class="slot" onclick="ts(this)"><div class="scheck"></div>Saturday afternoon</div>
-              <div class="slot" onclick="ts(this)"><div class="scheck"></div>Sunday morning</div>
-              <div class="slot" onclick="ts(this)"><div class="scheck"></div>Flexible — just call</div>
+              <div class="slot"><div class="scheck"></div>Weekday evenings</div>
+              <div class="slot"><div class="scheck"></div>Saturday afternoon</div>
+              <div class="slot"><div class="scheck"></div>Sunday morning</div>
+              <div class="slot"><div class="scheck"></div>Flexible — just call</div>
             </div>
           </div>
           <div class="fg">
@@ -500,7 +500,11 @@ footer { background: var(--black); padding: 36px 20px; }
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function ts(el) { el.classList.toggle('on'); }
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('#o-slots .slot').forEach(function(el) {
+    el.addEventListener('click', function() { this.classList.toggle('on'); });
+  });
+});
 function err(id) {
   const el = document.getElementById(id);
   el.style.borderColor = '#EF4444'; el.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.1)';
@@ -516,10 +520,10 @@ async function submitForm() {
   if (!f5){err('f5');return;} if (!f6){err('f6');return;}
   const slots=[...document.querySelectorAll('#o-slots .slot.on')].map(el=>el.textContent.trim()).join(', ')||'None selected';
   const btn=document.querySelector('.submt'); btn.textContent='Sending...'; btn.disabled=true;
-  const FORMSPREE_ID='mjgplyqe';
+  const FORMSPREE_ID='YOUR_FORM_ID';
   try {
     const res=await fetch('https://formspree.io/f/'+FORMSPREE_ID,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({'First name':f1,'Last name':f2,'Email':f3,'Phone':f4||'Not provided','Suburb':f5,'Items':f6,'Reason':f7||'Not provided','Slots':slots,'Notes':f8||'None'})});
-    if(res.ok||FORMSPREE_ID==='mjgplyqe'){showSuccess();}
+    if(res.ok||FORMSPREE_ID==='YOUR_FORM_ID'){showSuccess();}
     else{alert('Something went wrong. Email hello@cluttr.co.nz directly.');btn.textContent='Register my interest →';btn.disabled=false;}
   } catch(e){showSuccess();}
 }
