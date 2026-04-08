@@ -280,23 +280,23 @@ footer { background: var(--black); padding: 36px 20px; }
   </div>
 </section>
 
-<!-- SPLIT -->
+<!-- TRUST PILLS -->
 <div class="split-bar">
   <div class="split-inner">
     <div class="s-block">
-      <div class="s-pct" style="color:var(--blue);">50%</div>
-      <div class="s-who">You keep</div>
-      <div class="s-desc">Zero effort</div>
+      <div class="s-pct" style="color:var(--blue);">0</div>
+      <div class="s-who">Listings</div>
+      <div class="s-desc">You write none</div>
     </div>
     <div class="s-block">
-      <div class="s-pct" style="color:#7BAEFF;">35%</div>
-      <div class="s-who">Reseller</div>
-      <div class="s-desc">Does the work</div>
+      <div class="s-pct" style="color:#7BAEFF;">48h</div>
+      <div class="s-who">Response</div>
+      <div class="s-desc">We're quick</div>
     </div>
     <div class="s-block">
-      <div class="s-pct" style="color:rgba(255,255,255,0.22);">15%</div>
-      <div class="s-who">Cluttr</div>
-      <div class="s-desc">Platform fee</div>
+      <div class="s-pct" style="color:rgba(255,255,255,0.5);">✓</div>
+      <div class="s-who">Vetted</div>
+      <div class="s-desc">Every reseller</div>
     </div>
   </div>
 </div>
@@ -387,9 +387,57 @@ footer { background: var(--black); padding: 36px 20px; }
   <div class="reseller-strip">
     <div>
       <h3>Want to earn<br>as a reseller?</h3>
-      <p style="margin-top:8px;">Join the network. You collect, sell, and keep 35% of everything. Flexible and local.</p>
+      <p style="margin-top:8px;">Join the Cluttr network. You collect and sell locally — we handle the matching and admin.</p>
     </div>
-    <a href="/cdn-cgi/l/email-protection#18707d747477587b746d6c6c6a367b77367662" class="btn-white-sm">Get in touch →</a>
+    <button class="btn-white-sm" onclick="toggleResellerForm()">Apply to join →</button>
+  </div>
+
+  <!-- Reseller form -->
+  <div id="reseller-form-wrap" style="max-width:480px;margin:12px auto 0;display:none;">
+    <div class="fcard">
+      <div class="fcard-head">
+        <h3>Reseller application</h3>
+        <p>Tell us a bit about yourself — we'll be in touch.</p>
+      </div>
+      <div class="fcard-body">
+        <div id="reseller-inner">
+          <div class="frow">
+            <div><label>First name <span class="req">*</span></label><input type="text" id="r1" placeholder="James" autocomplete="given-name"></div>
+            <div><label>Last name <span class="req">*</span></label><input type="text" id="r2" placeholder="Wilson" autocomplete="family-name"></div>
+          </div>
+          <div class="frow">
+            <div><label>Email <span class="req">*</span></label><input type="email" id="r3" placeholder="james@email.com" autocomplete="email"></div>
+            <div><label>Phone <span class="req">*</span></label><input type="tel" id="r4" placeholder="021 000 0000" autocomplete="tel"></div>
+          </div>
+          <div class="fg">
+            <label>Your suburb <span class="req">*</span></label>
+            <select id="r5">
+              <option value="">Select your suburb...</option>
+              <optgroup label="Central City"><option>Christchurch Central</option><option>Cathedral Square area</option></optgroup>
+              <optgroup label="Inner Suburbs"><option>Addington</option><option>Edgeware</option><option>Linwood</option><option>Richmond</option><option>Spreydon</option><option>St Albans</option><option>Sydenham</option><option>Waltham</option></optgroup>
+              <optgroup label="North & Northwest"><option>Bishopdale</option><option>Bryndwr</option><option>Burnside</option><option>Casebrook</option><option>Fendalton</option><option>Harewood</option><option>Merivale</option><option>Northcote</option><option>Papanui</option><option>Redwood</option><option>Strowan</option><option>Mairehau</option></optgroup>
+              <optgroup label="West"><option>Halswell</option><option>Hornby</option><option>Islington</option><option>Riccarton</option><option>Sockburn</option><option>Upper Riccarton</option><option>Westmorland</option><option>Wigram</option></optgroup>
+              <optgroup label="East"><option>Aranui</option><option>Avondale</option><option>Avonside</option><option>Bexley</option><option>Bromley</option><option>Burwood</option><option>New Brighton</option><option>Parklands</option><option>Shirley</option><option>South New Brighton</option><option>Wainoni</option></optgroup>
+              <optgroup label="South"><option>Beckenham</option><option>Cashmere</option><option>Hoon Hay</option><option>Hillmorton</option><option>Huntsbury</option><option>Opawa</option><option>Prebbleton</option><option>St Martins</option></optgroup>
+              <optgroup label="Hills & Banks Peninsula"><option>Governors Bay</option><option>Heathcote Valley</option><option>Lyttelton</option><option>Redcliffs</option><option>Sumner</option><option>Taylor's Mistake</option></optgroup>
+              <optgroup label="Greater Christchurch"><option>Kaiapoi</option><option>Lincoln</option><option>Pegasus</option><option>Rangiora</option><option>Rolleston</option><option>Southbrook</option><option>Woodend</option></optgroup>
+              <optgroup label="Other"><option>Other — I'll add details below</option></optgroup>
+            </select>
+          </div>
+          <div class="fg">
+            <label>Tell us about yourself <span class="req">*</span></label>
+            <textarea id="r6" placeholder="e.g. Experience selling on Trade Me, Facebook Marketplace, your availability, why you're keen to join..."></textarea>
+          </div>
+          <button class="submt" onclick="submitReseller()">Submit application →</button>
+          <p class="fnote">We'll review your application and be in touch within 48 hours.</p>
+        </div>
+        <div class="success" id="reseller-success">
+          <div class="sicon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="stitle">Application received!</div>
+          <p class="ssub2">Thanks — we'll review your application and be in touch within 48 hours.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -474,7 +522,7 @@ footer { background: var(--black); padding: 36px 20px; }
         </div>
       </div>
     </div>
-    <p style="text-align:center;margin-top:18px;font-size:14px;color:var(--gray);">Want to earn as a reseller? <a href="/cdn-cgi/l/email-protection#38505d545457785b544d4c4c4a165b57165642" style="color:var(--blue);font-weight:600;text-decoration:none;">Get in touch →</a></p>
+
   </div>
 </div>
 
@@ -587,6 +635,55 @@ function resetForm() {
   document.getElementById('form-inner').style.display = 'block';
   document.getElementById('form-success').style.display = 'none';
 }
+function toggleResellerForm() {
+  var wrap = document.getElementById('reseller-form-wrap');
+  wrap.style.display = wrap.style.display === 'none' ? 'block' : 'none';
+  if (wrap.style.display === 'block') {
+    setTimeout(function() { wrap.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 50);
+  }
+}
+
+async function submitReseller() {
+  var r1 = document.getElementById('r1').value.trim();
+  var r2 = document.getElementById('r2').value.trim();
+  var r3 = document.getElementById('r3').value.trim();
+  var r4 = document.getElementById('r4').value.trim();
+  var r5 = document.getElementById('r5').value;
+  var r6 = document.getElementById('r6').value.trim();
+  if (!r1) { errField('r1'); return; }
+  if (!r3 || !r3.includes('@')) { errField('r3'); return; }
+  if (!r4) { errField('r4'); return; }
+  if (!r5) { errField('r5'); return; }
+  if (!r6) { errField('r6'); return; }
+  var btns = document.querySelectorAll('.submt');
+  var btn = btns[btns.length - 1];
+  btn.textContent = 'Sending...'; btn.disabled = true;
+  try {
+    var res = await fetch('https://formspree.io/f/mdapjkbl', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ 'First name': r1, 'Last name': r2, 'Email': r3, 'Phone': r4, 'Suburb': r5, 'About': r6 })
+    });
+    if (res.ok) {
+      document.getElementById('reseller-inner').style.display = 'none';
+      document.getElementById('reseller-success').style.display = 'block';
+    } else {
+      alert('Something went wrong. Please email hello@cluttr.co.nz directly.');
+      btn.textContent = 'Submit application →'; btn.disabled = false;
+    }
+  } catch(e) {
+    alert('Something went wrong. Please email hello@cluttr.co.nz directly.');
+    btn.textContent = 'Submit application →'; btn.disabled = false;
+  }
+}
+
+function errField(id) {
+  var el = document.getElementById(id);
+  el.style.borderColor = '#EF4444'; el.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.1)';
+  el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.focus();
+  setTimeout(function() { el.style.borderColor = ''; el.style.boxShadow = ''; }, 2800);
+}
+
 // scroll reveal
 var obs = new IntersectionObserver(function(entries) {
   entries.forEach(function(e, i) {
