@@ -96,27 +96,7 @@ nav {
   box-shadow: 0 8px 24px rgba(0,119,252,0.28);
 }
 .btn-blue:hover { background: var(--deep); transform: translateY(-1px); box-shadow: 0 12px 28px rgba(0,119,252,0.38); }
-.btn-ghost {
-  background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.6); padding: 15px 28px; border-radius: 14px;
-  font-size: 15px; font-weight: 600; text-decoration: none; border: 1px solid rgba(255,255,255,0.12);
-  cursor: pointer; font-family: var(--font); transition: all 0.2s; display: inline-block; width: 100%; max-width: 300px;
-}
-.btn-ghost:hover { color: white; border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.09); }
 @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
-
-/* SPLIT BAR */
-.split-bar { background: var(--black); padding: 0 20px 40px; }
-.split-inner {
-  max-width: 480px; margin: 0 auto;
-  display: grid; grid-template-columns: repeat(3,1fr);
-  background: rgba(255,255,255,0.03); border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.07); overflow: hidden;
-}
-.s-block { padding: 18px 14px; text-align: center; }
-.s-block + .s-block { border-left: 1px solid rgba(255,255,255,0.07); }
-.s-pct { font-size: 32px; font-weight: 800; letter-spacing: -1.5px; line-height: 1; margin-bottom: 4px; }
-.s-who { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 3px; }
-.s-desc { font-size: 11px; color: rgba(255,255,255,0.25); line-height: 1.5; }
 
 /* SECTION WRAPPER */
 .section { padding: 52px 20px; }
@@ -153,21 +133,6 @@ nav {
 .who-icon svg { width: 17px; height: 17px; stroke: var(--blue); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .who-title { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
 .who-sub { font-size: 12px; color: var(--gray); line-height: 1.5; }
-
-/* RESELLER STRIP */
-.reseller-wrap { padding: 0 20px 52px; }
-.reseller-strip {
-  max-width: 480px; margin: 0 auto; border-radius: 16px; background: var(--blue);
-  padding: 26px 22px; display: flex; flex-direction: column; gap: 14px;
-}
-.reseller-strip h3 { font-size: 22px; font-weight: 800; color: white; letter-spacing: -0.5px; line-height: 1.2; }
-.reseller-strip p { font-size: 14px; color: rgba(255,255,255,0.62); line-height: 1.6; }
-.btn-white-sm {
-  background: white; color: var(--blue); padding: 11px 22px; border-radius: 11px;
-  font-size: 14px; font-weight: 700; text-decoration: none; display: inline-block;
-  transition: all 0.15s; align-self: flex-start;
-}
-.btn-white-sm:hover { background: var(--off); }
 
 /* FORM */
 .form-bg { background: var(--off); }
@@ -222,6 +187,20 @@ textarea { resize: vertical; min-height: 88px; line-height: 1.6; }
 .sback { background: none; border: 1.5px solid var(--border); border-radius: 10px; padding: 10px 20px; font-size: 13px; font-family: var(--font); cursor: pointer; color: var(--black); font-weight: 600; transition: all 0.15s; }
 .sback:hover { border-color: var(--black); }
 
+/* ABOUT */
+.about-bg { background: var(--white); }
+.about-card {
+  background: var(--off); border-radius: 18px; padding: 28px 24px;
+  border: 1px solid var(--border);
+}
+.about-lead { font-size: 17px; font-weight: 700; line-height: 1.5; letter-spacing: -0.3px; margin-bottom: 16px; color: var(--black); }
+.about-body { font-size: 14px; color: var(--gray); line-height: 1.8; }
+.about-body p + p { margin-top: 12px; }
+.about-values { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
+.av-card { background: var(--white); border-radius: 12px; padding: 14px; border: 1px solid var(--border); }
+.av-label { font-size: 12px; font-weight: 700; color: var(--blue); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px; }
+.av-text { font-size: 12px; color: var(--gray); line-height: 1.6; }
+
 /* FOOTER */
 footer { background: var(--black); padding: 36px 20px; }
 .footer-inner { max-width: 480px; margin: 0 auto; }
@@ -243,11 +222,8 @@ footer { background: var(--black); padding: 36px 20px; }
   .nav-links a { display: inline-block; }
   .hero { padding: 100px 32px 64px; }
   .hero-btns { flex-direction: row; justify-content: center; }
-  .btn-blue, .btn-ghost { width: auto; max-width: none; }
-  .split-bar { padding: 0 32px 48px; }
+  .btn-blue { width: auto; max-width: none; }
   .section { padding: 64px 32px; }
-  .reseller-wrap { padding: 0 32px 64px; }
-  .reseller-strip { flex-direction: row; align-items: center; justify-content: space-between; gap: 24px; }
   footer { padding: 44px 32px; }
 }
 </style>
@@ -259,6 +235,7 @@ footer { background: var(--black); padding: 36px 20px; }
   <div class="nav-right">
     <div class="nav-links">
       <a href="#how">How it works</a>
+      <a href="#about">About</a>
       <a href="#register">Register</a>
     </div>
     <a href="https://calendly.com/cluttrstartup/30min" target="_blank" class="nav-cta">Book collection →</a>
@@ -274,39 +251,17 @@ footer { background: var(--black); padding: 36px 20px; }
     <h1>Your clutter.<br><span class="accent">Someone else's</span><br>hustle.</h1>
     <p class="hero-sub">Cluttr connects you with vetted local resellers who collect and sell your stuff. You get half. Zero effort.</p>
     <div class="hero-btns">
-      <a href="#register" class="btn-blue">Register your interest →</a>
-      <a href="https://calendly.com/cluttrstartup/30min" target="_blank" class="btn-ghost">Book a collection</a>
+      <a href="https://calendly.com/cluttrstartup/30min" target="_blank" class="btn-blue">Book a collection →</a>
     </div>
   </div>
 </section>
-
-<!-- TRUST PILLS -->
-<div class="split-bar">
-  <div class="split-inner">
-    <div class="s-block">
-      <div class="s-pct" style="color:var(--blue);">0</div>
-      <div class="s-who">Listings</div>
-      <div class="s-desc">You write none</div>
-    </div>
-    <div class="s-block">
-      <div class="s-pct" style="color:#7BAEFF;">48h</div>
-      <div class="s-who">Response</div>
-      <div class="s-desc">We're quick</div>
-    </div>
-    <div class="s-block">
-      <div class="s-pct" style="color:rgba(255,255,255,0.5);">✓</div>
-      <div class="s-who">Vetted</div>
-      <div class="s-desc">Every reseller</div>
-    </div>
-  </div>
-</div>
 
 <!-- HOW IT WORKS -->
 <div class="how-bg" id="how">
   <div class="section">
     <div class="section-inner">
       <div class="eyebrow">How it works</div>
-      <h2 class="section-title">Three steps.<br>Zero hassle.</h2>
+      <h2 class="section-title">Three steps.<br>One conversation.</h2>
       <p class="section-sub">From your spare room to sold — without writing a single listing.</p>
       <div class="steps">
         <div class="step">
@@ -314,9 +269,9 @@ footer { background: var(--black); padding: 36px 20px; }
             <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
           </div>
           <div>
-            <div class="step-num">01 — Register</div>
-            <div class="step-title">Tell us what you've got</div>
-            <p class="step-desc">Fill out the form below with a rough description of your items, your suburb, and when suits you. No perfect descriptions needed.</p>
+            <div class="step-num">01 — Book</div>
+            <div class="step-title">Pick a time that suits you</div>
+            <p class="step-desc">Use our Calendly to book a quick call or collection window. Tell us roughly what you've got — no perfect descriptions needed.</p>
           </div>
         </div>
         <div class="step">
@@ -326,7 +281,7 @@ footer { background: var(--black); padding: 36px 20px; }
           <div>
             <div class="step-num">02 — Match</div>
             <div class="step-title">We find your reseller</div>
-            <p class="step-desc">A vetted local Cluttr reseller is matched to your job. They contact you, arrange a time, and handle everything — listing, photos, buyers, all of it.</p>
+            <p class="step-desc">A vetted local Cluttr reseller is matched to your job. They handle everything — collection, photos, listings, and buyers.</p>
           </div>
         </div>
         <div class="step">
@@ -382,89 +337,57 @@ footer { background: var(--black); padding: 36px 20px; }
   </div>
 </div>
 
+<!-- ABOUT -->
+<div class="about-bg section" id="about">
+  <div class="section-inner">
+    <div class="eyebrow">About us</div>
+    <h2 class="section-title">A better way to<br>clear it out.</h2>
+    <div class="about-card">
+      <p class="about-lead">Cluttr was born out of a simple frustration — clearing out a home is hard work, and most people don't have the time, energy, or know-how to get good money for their stuff.</p>
+      <div class="about-body">
+        <p>We're a Christchurch-based startup building a marketplace that connects homeowners with skilled local resellers. You get to declutter without lifting a finger. Resellers get a steady stream of quality stock. Everyone wins.</p>
+        <p>Our resellers are vetted, local, and motivated — they only earn when your items sell, which means they're just as invested in getting you a great result as you are.</p>
+        <p>We're starting right here in Ōtautahi, and we're just getting started.</p>
+      </div>
+      <div class="about-values">
+        <div class="av-card">
+          <div class="av-label">Fair split</div>
+          <div class="av-text">50% to you, always. No hidden fees or deductions.</div>
+        </div>
+        <div class="av-card">
+          <div class="av-label">Vetted resellers</div>
+          <div class="av-text">Every reseller is screened before they join the platform.</div>
+        </div>
+        <div class="av-card">
+          <div class="av-label">Local first</div>
+          <div class="av-text">Christchurch-built and operated, for Christchurch people.</div>
+        </div>
+        <div class="av-card">
+          <div class="av-label">Zero hassle</div>
+          <div class="av-text">No listings, no strangers at the door, no wasted weekends.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<!-- FORM -->
+<!-- BOOK CTA -->
 <div class="form-bg section" id="register">
   <div class="section-inner">
     <div class="eyebrow">Get started</div>
     <h2 class="section-title">Ready to<br>clear it out?</h2>
-    <p class="section-sub">We'll match you with a local reseller within 48 hours.</p>
-    <div class="fcard">
-      <div class="fcard-head">
-        <h3>Register to declutter</h3>
-        <p>No commitment — just tell us what you've got.</p>
+    <p class="section-sub">Book a time that suits you and we'll take care of the rest.</p>
+    <div style="background: var(--white); border-radius: 18px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 24px rgba(0,0,0,0.05);">
+      <div style="background: var(--black); padding: 20px 22px;">
+        <h3 style="font-size: 17px; font-weight: 800; color: white; letter-spacing: -0.3px;">Book a collection</h3>
+        <p style="font-size: 13px; color: rgba(255,255,255,0.38); margin-top: 3px;">Pick a time and we'll match you with a local reseller within 48 hours.</p>
       </div>
-      <div class="fcard-body">
-        <div id="form-inner">
-          <div class="frow">
-            <div><label>First name <span class="req">*</span></label><input type="text" id="f1" placeholder="Sarah" autocomplete="given-name"></div>
-            <div><label>Last name <span class="req">*</span></label><input type="text" id="f2" placeholder="Johnson" autocomplete="family-name"></div>
-          </div>
-          <div class="frow">
-            <div><label>Email <span class="req">*</span></label><input type="email" id="f3" placeholder="sarah@email.com" autocomplete="email"></div>
-            <div><label>Phone</label><input type="tel" id="f4" placeholder="021 000 0000" autocomplete="tel"></div>
-          </div>
-          <div class="fg">
-            <label>Your suburb <span class="req">*</span></label>
-            <select id="f5">
-              <option value="">Select your suburb...</option>
-              <optgroup label="Central City"><option>Christchurch Central</option><option>Cathedral Square area</option></optgroup>
-              <optgroup label="Inner Suburbs"><option>Addington</option><option>Edgeware</option><option>Linwood</option><option>Richmond</option><option>Spreydon</option><option>St Albans</option><option>Sydenham</option><option>Waltham</option></optgroup>
-              <optgroup label="North & Northwest"><option>Bishopdale</option><option>Bryndwr</option><option>Burnside</option><option>Casebrook</option><option>Fendalton</option><option>Harewood</option><option>Merivale</option><option>Northcote</option><option>Papanui</option><option>Redwood</option><option>Strowan</option><option>Mairehau</option></optgroup>
-              <optgroup label="West"><option>Halswell</option><option>Hornby</option><option>Islington</option><option>Riccarton</option><option>Sockburn</option><option>Upper Riccarton</option><option>Westmorland</option><option>Wigram</option></optgroup>
-              <optgroup label="East"><option>Aranui</option><option>Avondale</option><option>Avonside</option><option>Bexley</option><option>Bromley</option><option>Burwood</option><option>New Brighton</option><option>Parklands</option><option>Shirley</option><option>South New Brighton</option><option>Wainoni</option></optgroup>
-              <optgroup label="South"><option>Beckenham</option><option>Cashmere</option><option>Hoon Hay</option><option>Hillmorton</option><option>Huntsbury</option><option>Opawa</option><option>Prebbleton</option><option>St Martins</option></optgroup>
-              <optgroup label="Hills & Banks Peninsula"><option>Governors Bay</option><option>Heathcote Valley</option><option>Lyttelton</option><option>Redcliffs</option><option>Sumner</option><option>Taylor's Mistake</option></optgroup>
-              <optgroup label="Greater Christchurch"><option>Kaiapoi</option><option>Lincoln</option><option>Pegasus</option><option>Rangiora</option><option>Rolleston</option><option>Southbrook</option><option>Woodend</option></optgroup>
-              <optgroup label="Other"><option>Other — I'll add details below</option></optgroup>
-            </select>
-          </div>
-          <div class="fg">
-            <label>What are you clearing out? <span class="req">*</span></label>
-            <textarea id="f6" placeholder="e.g. Two sofas, dining table and chairs, boxes of books... rough is totally fine!"></textarea>
-          </div>
-          <div class="fg">
-            <label>Why are you decluttering? <span style="font-weight:500;color:var(--gray)">(optional)</span></label>
-            <select id="f7">
-              <option value="">Select a reason...</option>
-              <option>Downsizing / moving to a smaller home</option>
-              <option>Moving into aged care</option>
-              <option>Managing a deceased estate</option>
-              <option>Relocating internationally</option>
-              <option>Relocating domestically</option>
-              <option>Divorce or separation</option>
-              <option>General declutter — just too much stuff!</option>
-              <option>Renovating or redecorating</option>
-              <option>Prefer not to say</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="fg">
-            <label>When works for collection? <span class="req">*</span></label>
-            <div class="slots" id="o-slots">
-              <label class="slot"><input type="checkbox" name="slots" value="Weekday evenings" style="display:none"><div class="scheck"></div>Weekday evenings</label>
-              <label class="slot"><input type="checkbox" name="slots" value="Saturday afternoon" style="display:none"><div class="scheck"></div>Saturday afternoon</label>
-              <label class="slot"><input type="checkbox" name="slots" value="Sunday morning" style="display:none"><div class="scheck"></div>Sunday morning</label>
-              <label class="slot"><input type="checkbox" name="slots" value="Flexible — just call" style="display:none"><div class="scheck"></div>Flexible — just call</label>
-            </div>
-          </div>
-          <div class="fg">
-            <label>Anything else? <span style="font-weight:500;color:var(--gray)">(optional)</span></label>
-            <textarea id="f8" style="min-height:70px;" placeholder="Access notes, parking, anything large or heavy..."></textarea>
-          </div>
-          <button class="submt" onclick="submitForm()">Register my interest →</button>
-          <p class="fnote">No commitment. We'll reply within 48 hours. Your details stay private.</p>
-        </div>
-        <div class="success" id="form-success">
-          <div class="sicon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div class="stitle">You're on the list!</div>
-          <p class="ssub2">We've got your details and will be in touch within 48 hours to match you with a local Cluttr reseller.</p>
-          <a href="https://calendly.com/cluttrstartup/30min" target="_blank" class="submt" style="display:inline-block;text-decoration:none;padding:15px 28px;width:auto;margin-bottom:12px;">Book your collection time →</a><br>
-          <button class="sback" onclick="resetForm()">Submit another</button>
-        </div>
+      <div style="padding: 28px 22px; text-align: center;">
+        <p style="font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 24px;">Use our booking form to tell us a bit about what you've got and pick a time that works for you. No commitment — just a quick conversation to get things rolling.</p>
+        <a href="https://calendly.com/cluttrstartup/30min" target="_blank" class="submt" style="display:inline-block;text-decoration:none;padding:15px 28px;width:auto;">Book your collection time →</a>
+        <p class="fnote" style="margin-top: 14px;">We'll reply within 48 hours. Your details stay private.</p>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -478,7 +401,7 @@ footer { background: var(--black); padding: 36px 20px; }
       </div>
       <div class="footer-links">
         <a href="#how">How it works</a>
-        <a href="#register">Register interest</a>
+        <a href="#about">About</a>
         <a href="https://calendly.com/cluttrstartup/30min" target="_blank">Book a collection</a>
       </div>
     </div>
@@ -545,92 +468,6 @@ footer { background: var(--black); padding: 36px 20px; }
 </div>
 
 <script>
-// Slot toggles — attached directly, no DOMContentLoaded needed
-window.onload = function() {
-  document.querySelectorAll('#o-slots .slot').forEach(function(el) {
-    el.addEventListener('click', function() {
-      this.classList.toggle('on');
-    });
-  });
-};
-
-function err(id) {
-  var el = document.getElementById(id);
-  el.style.borderColor = '#EF4444';
-  el.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.1)';
-  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  el.focus();
-  setTimeout(function() { el.style.borderColor = ''; el.style.boxShadow = ''; }, 2800);
-}
-
-async function submitForm() {
-  var f1 = document.getElementById('f1').value.trim();
-  var f2 = document.getElementById('f2').value.trim();
-  var f3 = document.getElementById('f3').value.trim();
-  var f4 = document.getElementById('f4').value.trim();
-  var f5 = document.getElementById('f5').value;
-  var f6 = document.getElementById('f6').value.trim();
-  var f7 = document.getElementById('f7').value;
-  var f8 = document.getElementById('f8').value.trim();
-
-  if (!f1) { err('f1'); return; }
-  if (!f3 || !f3.includes('@')) { err('f3'); return; }
-  if (!f5) { err('f5'); return; }
-  if (!f6) { err('f6'); return; }
-
-  var selectedSlots = [];
-  document.querySelectorAll('#o-slots input[type="checkbox"]:checked').forEach(function(el) {
-    selectedSlots.push(el.value);
-  });
-  var slots = selectedSlots.length > 0 ? selectedSlots.join(', ') : 'None selected';
-
-  var btn = document.querySelector('.submt');
-  btn.textContent = 'Sending...';
-  btn.disabled = true;
-
-  try {
-    var res = await fetch('https://formspree.io/f/mjgplyqe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        'First name': f1,
-        'Last name': f2,
-        'Email': f3,
-        'Phone': f4 || 'Not provided',
-        'Suburb': f5,
-        'Items': f6,
-        'Reason': f7 || 'Not provided',
-        'Available slots': slots,
-        'Notes': f8 || 'None'
-      })
-    });
-    if (res.ok) {
-      showSuccess();
-    } else {
-      alert('Something went wrong. Please email hello@cluttr.co.nz directly.');
-      btn.textContent = 'Register my interest →';
-      btn.disabled = false;
-    }
-  } catch(e) {
-    alert('Something went wrong. Please email hello@cluttr.co.nz directly.');
-    btn.textContent = 'Register my interest →';
-    btn.disabled = false;
-  }
-}
-
-function showSuccess() {
-  document.getElementById('form-inner').style.display = 'none';
-  document.getElementById('form-success').style.display = 'block';
-  window.scrollTo({ top: document.getElementById('register').offsetTop - 70, behavior: 'smooth' });
-}
-
-function resetForm() {
-  ['f1','f2','f3','f4','f6','f8'].forEach(function(id) { document.getElementById(id).value = ''; });
-  ['f5','f7'].forEach(function(id) { document.getElementById(id).value = ''; });
-  document.querySelectorAll('#o-slots input[type="checkbox"]').forEach(function(el) { el.checked = false; });
-  document.getElementById('form-inner').style.display = 'block';
-  document.getElementById('form-success').style.display = 'none';
-}
 function openResellerModal() {
   document.getElementById('reseller-modal').style.display = 'block';
   document.body.style.overflow = 'hidden';
@@ -684,7 +521,6 @@ function errField(id) {
   setTimeout(function() { el.style.borderColor = ''; el.style.boxShadow = ''; }, 2800);
 }
 
-// scroll reveal
 var obs = new IntersectionObserver(function(entries) {
   entries.forEach(function(e, i) {
     if (e.isIntersecting) {
@@ -694,7 +530,7 @@ var obs = new IntersectionObserver(function(entries) {
     }
   });
 }, { threshold: 0.12 });
-document.querySelectorAll('.step, .who-card, .s-block').forEach(function(el) {
+document.querySelectorAll('.step, .who-card, .av-card').forEach(function(el) {
   el.style.opacity = '0';
   obs.observe(el);
 });
