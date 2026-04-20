@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Cluttr.</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue: #0077FC;
+    --deep-blue: #0032DB;
+    --black: #0a0a0a;
+    --white: #ffffff;
+    --off-white: #f7f7f5;
+    --muted: #6b6b6b;
+    --border: #e8e8e4;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', Arial, sans-serif;
+    background: var(--white);
+    color: var(--black);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--blue);
+    letter-spacing: -0.5px;
+    text-decoration: none;
+  }
+
+  .nav-cta {
+    background: var(--blue);
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--deep-blue); }
+
+  /* HERO */
+  .hero {
+    padding: 160px 48px 100px;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 20px;
+  }
+
+  .hero-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(40px, 5vw, 60px);
+    line-height: 1.1;
+    letter-spacing: -1px;
+    color: var(--black);
+    margin-bottom: 28px;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--blue);
+  }
+
+  .hero-body {
+    font-size: 18px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 480px;
+  }
+
+  .hero-image-block {
+    position: relative;
+  }
+
+  .founder-card {
+    background: var(--off-white);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .founder-card-inner {
+    padding: 40px;
+  }
+
+  .founder-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 20px;
+    font-family: 'DM Serif Display', serif;
+  }
+
+  .founder-name {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .founder-title {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .founder-photo-wrap {
+    margin-bottom: 20px;
+  }
+
+  .founder-photo {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 3px solid var(--blue);
+    display: block;
+  }
+
+  .founder-quote {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--black);
+    border-left: 3px solid var(--blue);
+    padding-left: 20px;
+  }
+
+  .badge-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    background: white;
+  }
+
+  .badge.blue {
+    background: #e8f2ff;
+    border-color: #b3d1fd;
+    color: var(--deep-blue);
+  }
+
+  /* STORY */
+  .story {
+    padding: 80px 48px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 64px;
+  }
+
+  .story-nav {
+    position: sticky;
+    top: 100px;
+    align-self: start;
+  }
+
+  .story-nav-item {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 8px 0;
+    border-left: 2px solid var(--border);
+    padding-left: 16px;
+    transition: all 0.2s;
+    margin-bottom: 4px;
+  }
+
+  .story-nav-item:hover, .story-nav-item.active {
+    color: var(--blue);
+    border-left-color: var(--blue);
+  }
+
+  .story-content {
+    max-width: 680px;
+  }
+
+  .story-section {
+    margin-bottom: 72px;
+    scroll-margin-top: 100px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 16px;
+  }
+
+  .section-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+  }
+
+  .section-body {
+    font-size: 17px;
+    color: #333;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .section-body p { margin-bottom: 20px; }
+  .section-body p:last-child { margin-bottom: 0; }
+
+  .pull-quote {
+    margin: 40px 0;
+    padding: 32px 40px;
+    background: var(--off-white);
+    border-radius: 12px;
+    border-left: 4px solid var(--blue);
+  }
+
+  .pull-quote p {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--black);
+    margin: 0;
+  }
+
+  /* PROOF */
+  .proof-strip {
+    background: var(--off-white);
+    padding: 60px 48px;
+    margin: 0;
+  }
+
+  .proof-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .proof-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .proof-card {
+    background: white;
+    border-radius: 12px;
+    padding: 32px;
+    border: 1px solid var(--border);
+  }
+
+  .proof-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px;
+    color: var(--blue);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .proof-desc {
+    font-size: 15px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* MISSION */
+  .mission {
+    padding: 100px 48px;
+    background: var(--black);
+    color: white;
+    text-align: center;
+  }
+
+  .mission-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .mission-eyebrow {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 24px;
+    font-weight: 500;
+  }
+
+  .mission-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.15;
+    margin-bottom: 32px;
+    letter-spacing: -1px;
+  }
+
+  .mission-headline em {
+    font-style: italic;
+    color: var(--blue);
+  }
+
+  .mission-body {
+    font-size: 18px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 48px;
+  }
+
+  .mission-cta {
+    display: inline-block;
+    background: var(--blue);
+    color: white;
+    padding: 16px 36px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .mission-cta:hover {
+    background: var(--deep-blue);
+    transform: translateY(-1px);
+  }
+
+  /* MENTORS */
+  .mentors {
+    padding: 80px 48px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .section-title-center {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .section-title-center .section-label { display: block; margin-bottom: 12px; }
+
+  .section-title-center h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    letter-spacing: -0.5px;
+  }
+
+  .mentor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .mentor-card {
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s;
+  }
+
+  .mentor-card:hover { border-color: var(--blue); }
+
+  .mentor-init {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #e8f2ff;
+    color: var(--deep-blue);
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .mentor-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .mentor-role {
+    font-size: 13px;
+    color: var(--blue);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .mentor-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* AWARD */
+  .award-banner {
+    margin: 0 48px 80px;
+    padding: 32px 40px;
+    background: linear-gradient(135deg, #e8f2ff 0%, #f0f7ff 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    max-width: calc(1280px - 96px);
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #b3d1fd;
+  }
+
+  .award-icon {
+    font-size: 36px;
+    flex-shrink: 0;
+  }
+
+  .award-text h3 {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--deep-blue);
+    margin-bottom: 4px;
+  }
+
+  .award-text p {
+    font-size: 14px;
+    color: #3a5ca8;
+    font-weight: 300;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    max-width: 1280px;
+    margin: 0 auto 80px;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 48px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  footer a { color: var(--blue); text-decoration: none; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up {
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.35s; }
+  .delay-4 { animation-delay: 0.5s; }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .hero { grid-template-columns: 1fr; padding: 120px 24px 60px; gap: 40px; }
+    .story { padding: 60px 24px; }
+    .story-grid { grid-template-columns: 1fr; gap: 40px; }
+    .story-nav { display: none; }
+    .proof-strip { padding: 48px 24px; }
+    .proof-grid { grid-template-columns: 1fr; gap: 16px; }
+    .mentor-grid { grid-template-columns: 1fr; }
+    .mission { padding: 72px 24px; }
+    .mentors { padding: 60px 24px; }
+    .award-banner { margin: 0 24px 60px; padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Cluttr.</a>
+  <a class="nav-cta" href="#">Get started</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <p class="hero-eyebrow fade-up">Our story</p>
+    <h1 class="hero-headline fade-up delay-1">
+      Built from a <em>real problem.</em><br>By a real person.
+    </h1>
+    <p class="hero-body fade-up delay-2">
+      Cluttr didn't start as a business idea. It started as a way to help people I love
+      deal with one of the most overwhelming parts of a life transition — the stuff.
+    </p>
+  </div>
+
+  <div class="hero-image-block fade-up delay-3">
+    <div class="founder-card">
+      <div class="founder-card-inner">
+        <div class="founder-photo-wrap">
+          <img
+            src="zac.jpg"
+            alt="Zac Hemmings, Founder of Cluttr"
+            class="founder-photo"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="founder-avatar" style="display:none;">ZH</div>
+        </div>
+        <div class="founder-name">Zac Hemmings</div>
+        <div class="founder-title">Founder, Cluttr — Christchurch, NZ</div>
+        <p class="founder-quote">
+          "I watched people I care about drown in the practicalities of moving on.
+          I thought — there has to be a better way."
+        </p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- STORY -->
+<section class="story">
+  <div class="story-grid">
+    <nav class="story-nav">
+      <a class="story-nav-item active" href="#origin">Where it started</a>
+      <a class="story-nav-item" href="#problem">The real problem</a>
+      <a class="story-nav-item" href="#solution">What we built</a>
+      <a class="story-nav-item" href="#vision">Where we're going</a>
+    </nav>
+
+    <div class="story-content">
+
+      <div class="story-section" id="origin">
+        <p class="section-label">Where it started</p>
+        <h2 class="section-heading">It wasn't a business idea. It was a family problem.</h2>
+        <div class="section-body">
+          <p>
+            I watched people close to me go through major life transitions — a parent passing,
+            a home being cleared, a family trying to figure out what to do with decades of
+            accumulated belongings. The emotional weight of those moments is already immense.
+            And then you add the practical burden of actually dealing with the stuff.
+          </p>
+          <p>
+            Listing items individually. Arranging strangers to come to your home. Negotiating prices
+            when you have no energy left to negotiate. Or worse — just dumping it all, knowing
+            something valuable is going to landfill because it was the path of least resistance.
+          </p>
+          <p>
+            That felt wrong to me. There had to be a better way.
+          </p>
+        </div>
+
+        <div class="pull-quote">
+          <p>"We accumulate. We hoard. And it often takes a massive life event — or literally running out of space — before we actually deal with it."</p>
+        </div>
+      </div>
+
+      <div class="story-section" id="problem">
+        <p class="section-label">The real problem</p>
+        <h2 class="section-heading">The second-hand economy is booming. The experience of selling hasn't kept up.</h2>
+        <div class="section-body">
+          <p>
+            Platforms like TradeMe and Facebook Marketplace are great — if you have the time,
+            energy, and inclination to use them. You need to photograph everything. Write
+            descriptions. Handle enquiries. Arrange pick-ups. Deal with no-shows.
+          </p>
+          <p>
+            For someone going through a bereavement, a divorce, a move overseas, or downsizing
+            into a smaller home — that's not realistic. And so the default becomes: skip it,
+            chuck it, lose the value.
+          </p>
+          <p>
+            After talking to hundreds of people during our customer discovery phase, I saw this
+            pattern everywhere. This isn't a niche problem. It's a widespread one that nobody
+            had built a proper solution for.
+          </p>
+        </div>
+      </div>
+
+      <div class="story-section" id="solution">
+        <p class="section-label">What we built</p>
+        <h2 class="section-heading">Hand it over. We handle everything. You get paid.</h2>
+        <div class="section-body">
+          <p>
+            Cluttr is a marketplace platform that connects people who need to declutter with
+            a vetted network of resellers who do the selling on their behalf. You photograph
+            your items, submit them through our web app, and we match you with a local
+            reseller who collects, lists, sells, and handles the whole process.
+          </p>
+          <p>
+            When items sell, you receive your share directly. No strangers at the door. No
+            listings to manage. No awkward negotiations. Just proceeds, returned to you.
+          </p>
+          <p>
+            We're already doing this in Christchurch, right now — helping real people deal
+            with real life transitions. The model is proven. The feedback has been genuinely
+            moving. We're ready to grow.
+          </p>
+        </div>
+
+        <div class="pull-quote">
+          <p>"Think Uber, but for your stuff. You hand it over, someone else does the work, you both get paid."</p>
+        </div>
+      </div>
+
+      <div class="story-section" id="vision">
+        <p class="section-label">Where we're going</p>
+        <h2 class="section-heading">Jobs. Value. Less waste. More space to move forward.</h2>
+        <div class="section-body">
+          <p>
+            This isn't just about convenient decluttering. Every item Cluttr resells is an item
+            that doesn't end up in a skip. Every reseller we onboard is someone building a real,
+            flexible income. Every client we help is someone who gets to close a chapter of their
+            life without the weight of the stuff holding them back.
+          </p>
+          <p>
+            New Zealand throws away millions of dollars worth of reusable goods every year.
+            We want to build the infrastructure that changes that — creating a trusted, local,
+            circular economy for household goods, powered by people who are good at selling
+            and motivated to do it well.
+          </p>
+          <p>
+            We're a small team. We move fast. We're building this in the open, with our
+            community, and we're genuinely grateful for every person who gets in touch.
+          </p>
+          <p>
+            If you've got stuff to shift, a reseller in your area will be on the way.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Cluttr Ltd — Christchurch, New Zealand · <a href="#">hello@cluttr.co.nz</a></p>
+</footer>
+
+<script>
+  const navItems = document.querySelectorAll('.story-nav-item');
+  const sections = document.querySelectorAll('.story-section');
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navItems.forEach(n => n.classList.remove('active'));
+        const active = document.querySelector(`.story-nav-item[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px' });
+
+  sections.forEach(s => obs.observe(s));
+</script>
+
+</body>
+</html>
