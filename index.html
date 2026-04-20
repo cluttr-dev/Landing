@@ -34,63 +34,63 @@ nav {
 .nav-right { display: flex; align-items: center; gap: 12px; }
 .nav-links a { font-size: 13px; font-weight: 600; color: var(--gray); text-decoration: none; padding: 6px 10px; border-radius: 8px; transition: all 0.15s; display: none; }
 .nav-links a:hover { color: var(--black); background: var(--off); }
-.nav-cta { background: var(--blue); color: white; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; text-decoration: none; transition: all 0.15s; white-space: nowrap; }
+.nav-cta { background: var(--blue); color: white; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; text-decoration: none; transition: all 0.15s; white-space: nowrap; cursor: pointer; border: none; font-family: var(--font); }
 .nav-cta:hover { background: var(--deep); }
 
-/* HERO */
+/* HERO — compact */
 .hero {
-  min-height: 100svh; background: var(--black);
+  background: var(--black);
   display: flex; flex-direction: column; justify-content: center;
-  padding: 80px 20px 56px; position: relative; overflow: hidden; text-align: center;
+  padding: 88px 20px 52px; position: relative; overflow: hidden; text-align: center;
 }
 .orb { position: absolute; border-radius: 50%; pointer-events: none; }
 .orb1 {
-  width: 600px; height: 600px;
+  width: 560px; height: 560px;
   background: radial-gradient(circle, rgba(0,119,252,0.2) 0%, transparent 70%);
-  top: -80px; left: 50%; transform: translateX(-50%);
+  top: -120px; left: 50%; transform: translateX(-50%);
   filter: blur(50px); animation: breathe 7s ease-in-out infinite alternate;
 }
 .orb2 {
-  width: 280px; height: 280px;
+  width: 240px; height: 240px;
   background: radial-gradient(circle, rgba(0,50,219,0.18) 0%, transparent 70%);
-  bottom: 40px; right: -60px; filter: blur(60px);
+  bottom: -20px; right: -60px; filter: blur(60px);
   animation: breathe 9s 3s ease-in-out infinite alternate;
 }
-@keyframes breathe { to { opacity: 0.65; transform: scale(1.12) translateX(0); } }
+@keyframes breathe { to { opacity: 0.65; transform: scale(1.1) translateX(0); } }
 
 .live-pill {
   display: inline-flex; align-items: center; gap: 8px;
   background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.28);
-  color: var(--green); padding: 7px 16px; border-radius: 20px;
-  font-size: 13px; font-weight: 700; letter-spacing: 0.01em;
-  margin-bottom: 28px; position: relative; z-index: 1;
-  box-shadow: 0 0 24px rgba(34,197,94,0.12), 0 0 80px rgba(34,197,94,0.05);
+  color: var(--green); padding: 6px 14px; border-radius: 20px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.01em;
+  margin-bottom: 20px; position: relative; z-index: 1;
+  box-shadow: 0 0 24px rgba(34,197,94,0.1);
   animation: fadeUp 0.5s ease both;
 }
 .live-dot {
-  width: 7px; height: 7px; background: var(--green); border-radius: 50%;
-  box-shadow: 0 0 8px var(--green), 0 0 16px rgba(34,197,94,0.4);
+  width: 6px; height: 6px; background: var(--green); border-radius: 50%;
+  box-shadow: 0 0 6px var(--green);
   animation: pulse 2s infinite;
 }
 @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.55;transform:scale(0.8)} }
 
 .hero-content { position: relative; z-index: 1; max-width: 480px; margin: 0 auto; }
 .hero h1 {
-  font-size: clamp(40px, 11vw, 66px); font-weight: 800;
+  font-size: clamp(38px, 10vw, 60px); font-weight: 800;
   color: var(--white); line-height: 1.05; letter-spacing: -2px;
-  margin-bottom: 18px; animation: fadeUp 0.5s 0.06s ease both;
+  margin-bottom: 14px; animation: fadeUp 0.5s 0.06s ease both;
 }
 .hero h1 .accent { color: var(--blue); }
 .hero-sub {
-  font-size: 16px; color: rgba(255,255,255,0.45); line-height: 1.7;
-  margin-bottom: 36px; animation: fadeUp 0.5s 0.12s ease both;
+  font-size: 15px; color: rgba(255,255,255,0.4); line-height: 1.7;
+  margin-bottom: 28px; animation: fadeUp 0.5s 0.12s ease both;
 }
 .hero-btns {
   display: flex; flex-direction: column; gap: 10px; align-items: center;
   animation: fadeUp 0.5s 0.18s ease both;
 }
 .btn-blue {
-  background: var(--blue); color: white; padding: 15px 28px; border-radius: 14px;
+  background: var(--blue); color: white; padding: 14px 28px; border-radius: 14px;
   font-size: 15px; font-weight: 700; text-decoration: none; border: none; cursor: pointer;
   font-family: var(--font); transition: all 0.2s; display: inline-block; width: 100%; max-width: 300px;
   box-shadow: 0 8px 24px rgba(0,119,252,0.28);
@@ -98,48 +98,16 @@ nav {
 .btn-blue:hover { background: var(--deep); transform: translateY(-1px); box-shadow: 0 12px 28px rgba(0,119,252,0.38); }
 @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
 
-/* SECTION WRAPPER */
+/* SECTION */
 .section { padding: 52px 20px; }
 .section-inner { max-width: 480px; margin: 0 auto; }
 .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
 .section-title { font-size: clamp(26px, 7vw, 34px); font-weight: 800; letter-spacing: -1px; line-height: 1.1; margin-bottom: 10px; }
 .section-sub { font-size: 15px; color: var(--gray); line-height: 1.7; margin-bottom: 28px; }
 
-/* HOW IT WORKS */
-.how-bg { background: var(--off); }
-.steps { display: flex; flex-direction: column; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); background: var(--white); }
-.step {
-  display: flex; align-items: flex-start; gap: 14px; padding: 20px 18px;
-  border-bottom: 1px solid var(--border); transition: background 0.15s;
-}
-.step:last-child { border-bottom: none; }
-.step-icon-wrap {
-  width: 38px; height: 38px; border-radius: 11px; background: rgba(0,119,252,0.08);
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
-}
-.step-icon-wrap svg { width: 18px; height: 18px; stroke: var(--blue); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.step-num { font-size: 10px; font-weight: 700; color: var(--blue); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 3px; }
-.step-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.2px; }
-.step-desc { font-size: 13px; color: var(--gray); line-height: 1.6; }
-
-/* WHO */
-.who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.who-card {
-  background: var(--off); border-radius: 14px; padding: 16px 14px;
-  border: 1px solid var(--border); transition: all 0.15s;
-}
-.who-card:hover { background: rgba(0,119,252,0.05); border-color: rgba(0,119,252,0.18); }
-.who-icon { width: 34px; height: 34px; border-radius: 10px; background: rgba(0,119,252,0.09); display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
-.who-icon svg { width: 17px; height: 17px; stroke: var(--blue); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.who-title { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
-.who-sub { font-size: 12px; color: var(--gray); line-height: 1.5; }
-
-/* FORM */
+/* INLINE FORM */
 .form-bg { background: var(--off); }
-.fcard {
-  background: var(--white); border-radius: 18px; overflow: hidden;
-  border: 1px solid var(--border); box-shadow: 0 4px 24px rgba(0,0,0,0.05);
-}
+.fcard { background: var(--white); border-radius: 18px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 24px rgba(0,0,0,0.05); }
 .fcard-head { background: var(--black); padding: 20px 22px; }
 .fcard-head h3 { font-size: 17px; font-weight: 800; color: white; letter-spacing: -0.3px; }
 .fcard-head p { font-size: 13px; color: rgba(255,255,255,0.38); margin-top: 3px; }
@@ -159,6 +127,18 @@ select {
   background-repeat: no-repeat; background-position: right 12px center; background-color: var(--off); padding-right: 36px; cursor: pointer;
 }
 textarea { resize: vertical; min-height: 88px; line-height: 1.6; }
+.slots { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+.slot {
+  display: flex; align-items: center; gap: 8px; padding: 10px 11px;
+  border: 1.5px solid var(--border); border-radius: 10px; cursor: pointer;
+  transition: all 0.12s; font-size: 13px; color: var(--gray); user-select: none; background: var(--off);
+}
+.slot:hover { border-color: var(--blue); color: var(--black); }
+.slot input[type="checkbox"] { display: none; }
+.scheck { width: 16px; height: 16px; border-radius: 5px; border: 1.5px solid rgba(0,0,0,0.15); flex-shrink: 0; transition: all 0.12s; position: relative; background: white; }
+.slot input[type="checkbox"]:checked ~ .scheck { background: var(--blue); border-color: var(--blue); }
+.slot input[type="checkbox"]:checked ~ .scheck::after { content: ''; position: absolute; left: 4px; top: 2px; width: 5px; height: 8px; border: 2px solid white; border-top: none; border-left: none; transform: rotate(45deg); }
+.slot:has(input:checked) { border-color: var(--blue); background: rgba(0,119,252,0.06); color: var(--black); font-weight: 600; }
 .submt {
   width: 100%; background: var(--blue); color: white; border: none; border-radius: 12px;
   padding: 15px; font-size: 15px; font-weight: 700; font-family: var(--font);
@@ -167,50 +147,86 @@ textarea { resize: vertical; min-height: 88px; line-height: 1.6; }
 }
 .submt:hover { background: var(--deep); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,119,252,0.32); }
 .fnote { font-size: 12px; color: var(--gray); text-align: center; margin-top: 10px; line-height: 1.6; }
-.success { display: none; text-align: center; padding: 40px 16px; }
 .sicon { width: 52px; height: 52px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
 .sicon svg { width: 24px; height: 24px; stroke: white; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-.stitle { font-size: 24px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; }
-.ssub2 { font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 24px; }
+.stitle { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; }
+.ssub2 { font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 20px; }
 .sback { background: none; border: 1.5px solid var(--border); border-radius: 10px; padding: 10px 20px; font-size: 13px; font-family: var(--font); cursor: pointer; color: var(--black); font-weight: 600; transition: all 0.15s; }
 .sback:hover { border-color: var(--black); }
 
-/* ABOUT */
-.about-bg { background: var(--white); }
-.about-card {
-  background: var(--off); border-radius: 18px; padding: 28px 24px;
-  border: 1px solid var(--border);
+/* BOOKING MODAL */
+.bmodal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 300;
+  background: rgba(0,0,0,0.65); backdrop-filter: blur(6px);
+  padding: 16px; overflow-y: auto;
 }
-.founder-row {
-  display: flex; align-items: center; gap: 16px; margin-bottom: 20px;
-  padding-bottom: 20px; border-bottom: 1px solid var(--border);
+.bmodal-overlay.open { display: block; }
+.bmodal-wrap { max-width: 460px; margin: 48px auto 32px; position: relative; }
+.bmodal-close {
+  position: absolute; top: -36px; right: 0;
+  background: none; border: none; color: rgba(255,255,255,0.5);
+  font-size: 13px; cursor: pointer; font-family: var(--font); font-weight: 600;
+  display: flex; align-items: center; gap: 6px;
 }
-.founder-headshot {
-  width: 68px; height: 68px; border-radius: 50%;
-  object-fit: cover; object-position: center top;
-  border: 2.5px solid var(--blue); flex-shrink: 0;
+.bmodal-close:hover { color: white; }
+
+/* Step indicators */
+.bmodal-steps {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 16px; justify-content: center;
 }
-.founder-headshot-fallback {
-  width: 68px; height: 68px; border-radius: 50%;
-  background: rgba(0,119,252,0.1); border: 2.5px solid var(--blue);
+.bstep {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.35);
+}
+.bstep.active { color: white; }
+.bstep.done { color: var(--blue); }
+.bstep-dot {
+  width: 24px; height: 24px; border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.2);
   display: flex; align-items: center; justify-content: center;
-  font-size: 18px; font-weight: 800; color: var(--blue); flex-shrink: 0;
+  font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.35);
 }
-.founder-info-name { font-size: 15px; font-weight: 700; letter-spacing: -0.2px; margin-bottom: 2px; }
-.founder-info-role { font-size: 12px; color: var(--gray); font-weight: 500; }
-.about-lead { font-size: 16px; font-weight: 700; line-height: 1.55; letter-spacing: -0.2px; margin-bottom: 14px; color: var(--black); }
-.about-body { font-size: 14px; color: var(--gray); line-height: 1.8; }
-.about-body p + p { margin-top: 12px; }
-.about-pull {
-  margin: 18px 0; padding: 14px 16px;
-  background: rgba(0,119,252,0.05); border-left: 3px solid var(--blue);
-  border-radius: 0 10px 10px 0;
+.bstep.active .bstep-dot { background: var(--blue); border-color: var(--blue); color: white; }
+.bstep.done .bstep-dot { background: rgba(0,119,252,0.2); border-color: var(--blue); color: var(--blue); }
+.bstep-line { flex: 1; height: 1px; background: rgba(255,255,255,0.12); max-width: 40px; }
+
+/* Calendly panel */
+.calendly-panel { background: var(--white); border-radius: 18px; overflow: hidden; border: 1px solid var(--border); }
+.calendly-head { background: var(--black); padding: 20px 22px; }
+.calendly-head h3 { font-size: 17px; font-weight: 800; color: white; letter-spacing: -0.3px; }
+.calendly-head p { font-size: 13px; color: rgba(255,255,255,0.38); margin-top: 3px; }
+.calendly-body { padding: 24px 22px; text-align: center; }
+.calendly-body p { font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 20px; }
+.btn-calendly {
+  display: inline-block; background: var(--blue); color: white;
+  padding: 15px 28px; border-radius: 12px; font-size: 15px; font-weight: 700;
+  text-decoration: none; transition: all 0.2s; width: 100%;
+  box-shadow: 0 4px 16px rgba(0,119,252,0.22); font-family: var(--font);
 }
-.about-pull p { font-size: 13px; font-weight: 600; color: var(--black); line-height: 1.6; font-style: italic; margin: 0; }
-.about-values { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
-.av-card { background: var(--white); border-radius: 12px; padding: 14px; border: 1px solid var(--border); }
-.av-label { font-size: 12px; font-weight: 700; color: var(--blue); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px; }
-.av-text { font-size: 12px; color: var(--gray); line-height: 1.6; }
+.btn-calendly:hover { background: var(--deep); transform: translateY(-1px); }
+.calendly-skip { font-size: 12px; color: var(--gray); margin-top: 12px; display: block; }
+.calendly-skip a { color: var(--blue); text-decoration: none; }
+
+/* WHO */
+.who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.who-card { background: var(--off); border-radius: 14px; padding: 16px 14px; border: 1px solid var(--border); transition: all 0.15s; }
+.who-card:hover { background: rgba(0,119,252,0.05); border-color: rgba(0,119,252,0.18); }
+.who-icon { width: 34px; height: 34px; border-radius: 10px; background: rgba(0,119,252,0.09); display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+.who-icon svg { width: 17px; height: 17px; stroke: var(--blue); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.who-title { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
+.who-sub { font-size: 12px; color: var(--gray); line-height: 1.5; }
+
+/* HOW */
+.how-bg { background: var(--off); }
+.steps { display: flex; flex-direction: column; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); background: var(--white); }
+.step { display: flex; align-items: flex-start; gap: 14px; padding: 20px 18px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+.step:last-child { border-bottom: none; }
+.step-icon-wrap { width: 38px; height: 38px; border-radius: 11px; background: rgba(0,119,252,0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.step-icon-wrap svg { width: 18px; height: 18px; stroke: var(--blue); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.step-num { font-size: 10px; font-weight: 700; color: var(--blue); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 3px; }
+.step-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.2px; }
+.step-desc { font-size: 13px; color: var(--gray); line-height: 1.6; }
 
 /* FOOTER */
 footer { background: var(--black); padding: 36px 20px; }
@@ -227,11 +243,10 @@ footer { background: var(--black); padding: 36px 20px; }
 .footer-live { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--green); font-weight: 600; }
 .footer-live::before { content: ''; width: 6px; height: 6px; background: var(--green); border-radius: 50%; box-shadow: 0 0 6px var(--green); animation: pulse 2s infinite; }
 
-/* DESKTOP */
 @media (min-width: 640px) {
   nav { padding: 0 32px; }
   .nav-links a { display: inline-block; }
-  .hero { padding: 100px 32px 64px; }
+  .hero { padding: 96px 32px 56px; }
   .hero-btns { flex-direction: row; justify-content: center; }
   .btn-blue { width: auto; max-width: none; }
   .section { padding: 64px 32px; }
@@ -242,14 +257,14 @@ footer { background: var(--black); padding: 36px 20px; }
 <body>
 
 <nav>
-  <a href="#" class="nav-logo"><img src="cluttr_logo.png" alt="Cluttr"></a>
+  <a href="index.html" class="nav-logo"><img src="cluttr_logo.png" alt="Cluttr"></a>
   <div class="nav-right">
     <div class="nav-links">
+      <a href="#who">Who it's for</a>
       <a href="#how">How it works</a>
-      <a href="#about">About</a>
-      <a href="#register">Register</a>
+      <a href="about.html">About</a>
     </div>
-    <a href="https://calendly.com/cluttrstartup/30min" target="_blank" class="nav-cta">Book collection →</a>
+    <button class="nav-cta" onclick="openBooking()">Book a collection →</button>
   </div>
 </nav>
 
@@ -262,10 +277,104 @@ footer { background: var(--black); padding: 36px 20px; }
     <h1>Your clutter.<br><span class="accent">Someone else's</span><br>hustle.</h1>
     <p class="hero-sub">Cluttr connects you with vetted local resellers who collect and sell your stuff. You get half. Zero effort.</p>
     <div class="hero-btns">
-      <a href="https://calendly.com/cluttrstartup/30min" target="_blank" class="btn-blue">Book a collection →</a>
+      <button class="btn-blue" onclick="openBooking()">Book a collection →</button>
     </div>
   </div>
 </section>
+
+<!-- INLINE FORM -->
+<div class="form-bg section" id="register">
+  <div class="section-inner">
+    <div class="eyebrow">Get started</div>
+    <h2 class="section-title">Ready to<br>clear it out?</h2>
+    <p class="section-sub">Tell us what you've got and when works for you — we'll take care of the rest.</p>
+    <div class="fcard">
+      <div class="fcard-head">
+        <h3>Book a collection</h3>
+        <p>Fill in your details and we'll match you with a local reseller within 48 hours.</p>
+      </div>
+      <div class="fcard-body">
+        <div id="inline-form-inner">
+          <div class="frow">
+            <div><label>First name <span class="req">*</span></label><input type="text" id="if1" placeholder="Sarah" autocomplete="given-name"></div>
+            <div><label>Last name <span class="req">*</span></label><input type="text" id="if2" placeholder="Johnson" autocomplete="family-name"></div>
+          </div>
+          <div class="frow">
+            <div><label>Email <span class="req">*</span></label><input type="email" id="if3" placeholder="sarah@email.com" autocomplete="email"></div>
+            <div><label>Phone <span class="req">*</span></label><input type="tel" id="if4" placeholder="021 000 0000" autocomplete="tel"></div>
+          </div>
+          <div class="fg">
+            <label>Your suburb <span class="req">*</span></label>
+            <select id="if5">
+              <option value="">Select your suburb...</option>
+              <optgroup label="Central City"><option>Christchurch Central</option><option>Cathedral Square area</option></optgroup>
+              <optgroup label="Inner Suburbs"><option>Addington</option><option>Edgeware</option><option>Linwood</option><option>Richmond</option><option>Spreydon</option><option>St Albans</option><option>Sydenham</option><option>Waltham</option></optgroup>
+              <optgroup label="North & Northwest"><option>Bishopdale</option><option>Bryndwr</option><option>Burnside</option><option>Casebrook</option><option>Fendalton</option><option>Harewood</option><option>Merivale</option><option>Northcote</option><option>Papanui</option><option>Redwood</option><option>Strowan</option><option>Mairehau</option></optgroup>
+              <optgroup label="West"><option>Halswell</option><option>Hornby</option><option>Islington</option><option>Riccarton</option><option>Sockburn</option><option>Upper Riccarton</option><option>Westmorland</option><option>Wigram</option></optgroup>
+              <optgroup label="East"><option>Aranui</option><option>Avondale</option><option>Avonside</option><option>Bexley</option><option>Bromley</option><option>Burwood</option><option>New Brighton</option><option>Parklands</option><option>Shirley</option><option>South New Brighton</option><option>Wainoni</option></optgroup>
+              <optgroup label="South"><option>Beckenham</option><option>Cashmere</option><option>Hoon Hay</option><option>Hillmorton</option><option>Huntsbury</option><option>Opawa</option><option>Prebbleton</option><option>St Martins</option></optgroup>
+              <optgroup label="Hills & Banks Peninsula"><option>Governors Bay</option><option>Heathcote Valley</option><option>Lyttelton</option><option>Redcliffs</option><option>Sumner</option><option>Taylor's Mistake</option></optgroup>
+              <optgroup label="Greater Christchurch"><option>Kaiapoi</option><option>Lincoln</option><option>Pegasus</option><option>Rangiora</option><option>Rolleston</option><option>Southbrook</option><option>Woodend</option></optgroup>
+              <optgroup label="Other"><option>Other — I'll add details below</option></optgroup>
+            </select>
+          </div>
+          <div class="fg">
+            <label>What are you looking to shift? <span class="req">*</span></label>
+            <textarea id="if6" placeholder="e.g. Furniture, whiteware, clothing, collectables, tools — give us a rough idea of what you've got..."></textarea>
+          </div>
+          <div class="fg">
+            <label>Preferred collection times</label>
+            <div class="slots">
+              <label class="slot"><input type="checkbox" name="islot" value="Weekday morning"><div class="scheck"></div>Weekday morning</label>
+              <label class="slot"><input type="checkbox" name="islot" value="Weekday afternoon"><div class="scheck"></div>Weekday afternoon</label>
+              <label class="slot"><input type="checkbox" name="islot" value="Saturday"><div class="scheck"></div>Saturday</label>
+              <label class="slot"><input type="checkbox" name="islot" value="Sunday"><div class="scheck"></div>Sunday</label>
+            </div>
+          </div>
+          <button class="submt" onclick="submitInlineForm()">Request a collection →</button>
+          <p class="fnote">We'll be in touch within 48 hours. Your details stay private.</p>
+        </div>
+        <div id="inline-form-success" style="display:none;text-align:center;padding:32px 16px;">
+          <div class="sicon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="stitle">Request received!</div>
+          <p class="ssub2">Thanks — we'll match you with a local reseller and be in touch within 48 hours.</p>
+          <a href="https://calendly.com/cluttrstartup/30min" target="_blank" class="submt" style="display:block;text-decoration:none;margin-bottom:10px;">Book a time with us on Calendly →</a>
+          <p class="calendly-skip">Prefer to wait? We'll reach out within 48 hours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHO IT'S FOR -->
+<div class="section" id="who">
+  <div class="section-inner">
+    <div class="eyebrow">Who it's for</div>
+    <h2 class="section-title">Built for life's<br>big moments.</h2>
+    <div class="who-grid">
+      <div class="who-card">
+        <div class="who-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div class="who-title">Downsizing</div>
+        <div class="who-sub">Moving smaller? We clear the rest.</div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <div class="who-title">Deceased estates</div>
+        <div class="who-sub">We make the practical part easy.</div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+        <div class="who-title">Relocating</div>
+        <div class="who-sub">Clearing a home fast before a move.</div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon"><svg viewBox="0 0 24 24"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg></div>
+        <div class="who-title">General clutter</div>
+        <div class="who-sub">Just too much stuff collecting dust.</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- HOW IT WORKS -->
 <div class="how-bg" id="how">
@@ -276,19 +385,15 @@ footer { background: var(--black); padding: 36px 20px; }
       <p class="section-sub">From your spare room to sold — without writing a single listing.</p>
       <div class="steps">
         <div class="step">
-          <div class="step-icon-wrap">
-            <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
-          </div>
+          <div class="step-icon-wrap"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></div>
           <div>
-            <div class="step-num">01 — Book</div>
-            <div class="step-title">Pick a time that suits you</div>
-            <p class="step-desc">Use our Calendly to book a quick call or collection window. Tell us roughly what you've got — no perfect descriptions needed.</p>
+            <div class="step-num">01 — Register</div>
+            <div class="step-title">Tell us what you've got</div>
+            <p class="step-desc">Fill in the form above or book via Calendly — tell us roughly what you have and when works for you.</p>
           </div>
         </div>
         <div class="step">
-          <div class="step-icon-wrap">
-            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
+          <div class="step-icon-wrap"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
           <div>
             <div class="step-num">02 — Match</div>
             <div class="step-title">We find your reseller</div>
@@ -296,130 +401,13 @@ footer { background: var(--black); padding: 36px 20px; }
           </div>
         </div>
         <div class="step">
-          <div class="step-icon-wrap">
-            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          </div>
+          <div class="step-icon-wrap"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
           <div>
             <div class="step-num">03 — Get paid</div>
             <div class="step-title">Money hits your account</div>
             <p class="step-desc">When your items sell, 50% of the total goes straight to you. No Trade Me, no strangers, no wasted weekends.</p>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- WHO -->
-<div class="section">
-  <div class="section-inner">
-    <div class="eyebrow">Who it's for</div>
-    <h2 class="section-title">Built for life's<br>big moments.</h2>
-    <div class="who-grid">
-      <div class="who-card">
-        <div class="who-icon">
-          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </div>
-        <div class="who-title">Downsizing</div>
-        <div class="who-sub">Moving smaller? We clear the rest.</div>
-      </div>
-      <div class="who-card">
-        <div class="who-icon">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        </div>
-        <div class="who-title">Deceased estates</div>
-        <div class="who-sub">We make the practical part easy.</div>
-      </div>
-      <div class="who-card">
-        <div class="who-icon">
-          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-        </div>
-        <div class="who-title">Relocating</div>
-        <div class="who-sub">Clearing a home fast before a move.</div>
-      </div>
-      <div class="who-card">
-        <div class="who-icon">
-          <svg viewBox="0 0 24 24"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
-        </div>
-        <div class="who-title">General clutter</div>
-        <div class="who-sub">Just too much stuff collecting dust.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ABOUT -->
-<div class="about-bg section" id="about">
-  <div class="section-inner">
-    <div class="eyebrow">About us</div>
-    <h2 class="section-title">Built from a<br>real problem.</h2>
-    <div class="about-card">
-
-      <div class="founder-row">
-        <img
-          src="headshot-2.png"
-          alt="Zac Hemmings, Founder of Cluttr"
-          class="founder-headshot"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-        />
-        <div class="founder-headshot-fallback" style="display:none;">ZH</div>
-        <div>
-          <div class="founder-info-name">Zac Hemmings</div>
-          <div class="founder-info-role">Founder — Christchurch, NZ</div>
-        </div>
-      </div>
-
-      <p class="about-lead">Cluttr didn't start as a business idea. It started as a way to help people I love deal with one of the most overwhelming parts of a life transition — the stuff.</p>
-
-      <div class="about-body">
-        <p>I watched people close to me go through major life events — a parent passing, a home being cleared, a family trying to figure out what to do with decades of accumulated belongings. The emotional weight is already immense. And then you add the practical burden of actually dealing with it all.</p>
-
-        <div class="about-pull">
-          <p>"We accumulate, we hoard, and it often takes a massive life event — or literally running out of space — to actually deal with it."</p>
-        </div>
-
-        <p>After talking to hundreds of people, I saw this pattern everywhere. Platforms like TradeMe and Facebook Marketplace are great if you have the time and energy. But for someone going through a bereavement, a divorce, or a move overseas — that's not realistic. So the default becomes: skip it, chuck it, lose the value.</p>
-
-        <p>We're already doing this in Christchurch right now — helping real people deal with real life transitions, and they're stoked. A reseller collects your stuff, handles the listings and the buyers, and you get half of whatever it sells for. No strangers at the door. No wasted weekends. Just money, back in your pocket.</p>
-      </div>
-
-      <div class="about-values">
-        <div class="av-card">
-          <div class="av-label">Fair split</div>
-          <div class="av-text">50% to you, always. No hidden fees or deductions.</div>
-        </div>
-        <div class="av-card">
-          <div class="av-label">Vetted resellers</div>
-          <div class="av-text">Every reseller is screened before they join the platform.</div>
-        </div>
-        <div class="av-card">
-          <div class="av-label">Local first</div>
-          <div class="av-text">Christchurch-built and operated, for Christchurch people.</div>
-        </div>
-        <div class="av-card">
-          <div class="av-label">Zero hassle</div>
-          <div class="av-text">No listings, no strangers at the door, no wasted weekends.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- BOOK CTA -->
-<div class="form-bg section" id="register">
-  <div class="section-inner">
-    <div class="eyebrow">Get started</div>
-    <h2 class="section-title">Ready to<br>clear it out?</h2>
-    <p class="section-sub">Book a time that suits you and we'll take care of the rest.</p>
-    <div style="background: var(--white); border-radius: 18px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 24px rgba(0,0,0,0.05);">
-      <div style="background: var(--black); padding: 20px 22px;">
-        <h3 style="font-size: 17px; font-weight: 800; color: white; letter-spacing: -0.3px;">Book a collection</h3>
-        <p style="font-size: 13px; color: rgba(255,255,255,0.38); margin-top: 3px;">Pick a time and we'll match you with a local reseller within 48 hours.</p>
-      </div>
-      <div style="padding: 28px 22px; text-align: center;">
-        <p style="font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 24px;">Use our booking form to tell us a bit about what you've got and pick a time that works for you. No commitment — just a quick conversation to get things rolling.</p>
-        <a href="https://calendly.com/cluttrstartup/30min" target="_blank" class="submt" style="display:inline-block;text-decoration:none;padding:15px 28px;width:auto;">Book your collection time →</a>
-        <p class="fnote" style="margin-top: 14px;">We'll reply within 48 hours. Your details stay private.</p>
       </div>
     </div>
   </div>
@@ -434,9 +422,9 @@ footer { background: var(--black); padding: 36px 20px; }
         <div class="footer-tagline">Building the new way to deal with clutter — Christchurch, NZ.</div>
       </div>
       <div class="footer-links">
+        <a href="#who">Who it's for</a>
         <a href="#how">How it works</a>
-        <a href="#about">About</a>
-        <a href="https://calendly.com/cluttrstartup/30min" target="_blank">Book a collection</a>
+        <a href="about.html">About</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -448,6 +436,87 @@ footer { background: var(--black); padding: 36px 20px; }
     </div>
   </div>
 </footer>
+
+<!-- BOOKING MODAL -->
+<div class="bmodal-overlay" id="booking-modal" onclick="closeBookingOutside(event)">
+  <div class="bmodal-wrap">
+    <button class="bmodal-close" onclick="closeBooking()">✕ Close</button>
+
+    <div class="bmodal-steps" id="bmodal-steps">
+      <div class="bstep active" id="bstep1"><div class="bstep-dot">1</div><span>Your details</span></div>
+      <div class="bstep-line"></div>
+      <div class="bstep" id="bstep2"><div class="bstep-dot">2</div><span>Book a time</span></div>
+    </div>
+
+    <!-- Step 1: Form -->
+    <div id="bmodal-form-panel">
+      <div class="fcard">
+        <div class="fcard-head">
+          <h3>Book a collection</h3>
+          <p>Tell us what you've got — we'll match you within 48 hours.</p>
+        </div>
+        <div class="fcard-body">
+          <div id="bmodal-form-inner">
+            <div class="frow">
+              <div><label>First name <span class="req">*</span></label><input type="text" id="m1" placeholder="Sarah" autocomplete="given-name"></div>
+              <div><label>Last name <span class="req">*</span></label><input type="text" id="m2" placeholder="Johnson" autocomplete="family-name"></div>
+            </div>
+            <div class="frow">
+              <div><label>Email <span class="req">*</span></label><input type="email" id="m3" placeholder="sarah@email.com" autocomplete="email"></div>
+              <div><label>Phone <span class="req">*</span></label><input type="tel" id="m4" placeholder="021 000 0000" autocomplete="tel"></div>
+            </div>
+            <div class="fg">
+              <label>Your suburb <span class="req">*</span></label>
+              <select id="m5">
+                <option value="">Select your suburb...</option>
+                <optgroup label="Central City"><option>Christchurch Central</option><option>Cathedral Square area</option></optgroup>
+                <optgroup label="Inner Suburbs"><option>Addington</option><option>Edgeware</option><option>Linwood</option><option>Richmond</option><option>Spreydon</option><option>St Albans</option><option>Sydenham</option><option>Waltham</option></optgroup>
+                <optgroup label="North & Northwest"><option>Bishopdale</option><option>Bryndwr</option><option>Burnside</option><option>Casebrook</option><option>Fendalton</option><option>Harewood</option><option>Merivale</option><option>Northcote</option><option>Papanui</option><option>Redwood</option><option>Strowan</option><option>Mairehau</option></optgroup>
+                <optgroup label="West"><option>Halswell</option><option>Hornby</option><option>Islington</option><option>Riccarton</option><option>Sockburn</option><option>Upper Riccarton</option><option>Westmorland</option><option>Wigram</option></optgroup>
+                <optgroup label="East"><option>Aranui</option><option>Avondale</option><option>Avonside</option><option>Bexley</option><option>Bromley</option><option>Burwood</option><option>New Brighton</option><option>Parklands</option><option>Shirley</option><option>South New Brighton</option><option>Wainoni</option></optgroup>
+                <optgroup label="South"><option>Beckenham</option><option>Cashmere</option><option>Hoon Hay</option><option>Hillmorton</option><option>Huntsbury</option><option>Opawa</option><option>Prebbleton</option><option>St Martins</option></optgroup>
+                <optgroup label="Hills & Banks Peninsula"><option>Governors Bay</option><option>Heathcote Valley</option><option>Lyttelton</option><option>Redcliffs</option><option>Sumner</option><option>Taylor's Mistake</option></optgroup>
+                <optgroup label="Greater Christchurch"><option>Kaiapoi</option><option>Lincoln</option><option>Pegasus</option><option>Rangiora</option><option>Rolleston</option><option>Southbrook</option><option>Woodend</option></optgroup>
+                <optgroup label="Other"><option>Other — I'll add details below</option></optgroup>
+              </select>
+            </div>
+            <div class="fg">
+              <label>What are you looking to shift? <span class="req">*</span></label>
+              <textarea id="m6" placeholder="e.g. Furniture, whiteware, clothing, collectables, tools — give us a rough idea..." style="min-height:72px;"></textarea>
+            </div>
+            <div class="fg">
+              <label>Preferred collection times</label>
+              <div class="slots">
+                <label class="slot"><input type="checkbox" name="mslot" value="Weekday morning"><div class="scheck"></div>Weekday morning</label>
+                <label class="slot"><input type="checkbox" name="mslot" value="Weekday afternoon"><div class="scheck"></div>Weekday afternoon</label>
+                <label class="slot"><input type="checkbox" name="mslot" value="Saturday"><div class="scheck"></div>Saturday</label>
+                <label class="slot"><input type="checkbox" name="mslot" value="Sunday"><div class="scheck"></div>Sunday</label>
+              </div>
+            </div>
+            <button class="submt" onclick="submitModalForm()">Next — pick a time →</button>
+            <p class="fnote">Your details stay private. We'll be in touch within 48 hours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Calendly -->
+    <div id="bmodal-calendly-panel" style="display:none;">
+      <div class="calendly-panel">
+        <div class="calendly-head">
+          <h3>Pick a time</h3>
+          <p>Lock in a slot and we'll have a reseller with you on the day.</p>
+        </div>
+        <div class="calendly-body">
+          <p>Your details have been submitted. Now choose a collection window that works for you — or we'll reach out within 48 hours to arrange a time.</p>
+          <a href="https://calendly.com/cluttrstartup/30min" target="_blank" class="btn-calendly">Open Calendly to book a time →</a>
+          <span class="calendly-skip">No rush — <a href="#" onclick="closeBooking();return false;">close this</a> and we'll contact you directly.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <!-- RESELLER MODAL -->
 <div id="reseller-modal" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);padding:20px;overflow-y:auto;" onclick="closeModalOutside(event)">
@@ -490,7 +559,7 @@ footer { background: var(--black); padding: 36px 20px; }
           <button class="submt" onclick="submitReseller()">Submit application →</button>
           <p class="fnote">We'll review your application and be in touch within 48 hours.</p>
         </div>
-        <div class="success" id="reseller-success" style="display:none;">
+        <div id="reseller-success" style="display:none;text-align:center;padding:40px 16px;">
           <div class="sicon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
           <div class="stitle">Application received!</div>
           <p class="ssub2">Thanks — we'll be in touch within 48 hours.</p>
@@ -502,72 +571,129 @@ footer { background: var(--black); padding: 36px 20px; }
 </div>
 
 <script>
-function openResellerModal() {
-  document.getElementById('reseller-modal').style.display = 'block';
-  document.body.style.overflow = 'hidden';
+/* ---- BOOKING MODAL ---- */
+function openBooking(){
+  document.getElementById('booking-modal').classList.add('open');
+  document.body.style.overflow='hidden';
+  // reset to step 1
+  document.getElementById('bmodal-form-panel').style.display='block';
+  document.getElementById('bmodal-calendly-panel').style.display='none';
+  document.getElementById('bstep1').className='bstep active';
+  document.getElementById('bstep2').className='bstep';
 }
-function closeResellerModal() {
-  document.getElementById('reseller-modal').style.display = 'none';
-  document.body.style.overflow = '';
+function closeBooking(){
+  document.getElementById('booking-modal').classList.remove('open');
+  document.body.style.overflow='';
 }
-function closeModalOutside(e) {
-  if (e.target === document.getElementById('reseller-modal')) closeResellerModal();
+function closeBookingOutside(e){
+  if(e.target===document.getElementById('booking-modal')) closeBooking();
 }
 
-async function submitReseller() {
-  var r1 = document.getElementById('r1').value.trim();
-  var r2 = document.getElementById('r2').value.trim();
-  var r3 = document.getElementById('r3').value.trim();
-  var r4 = document.getElementById('r4').value.trim();
-  var r5 = document.getElementById('r5').value;
-  var r6 = document.getElementById('r6').value.trim();
-  if (!r1) { errField('r1'); return; }
-  if (!r3 || !r3.includes('@')) { errField('r3'); return; }
-  if (!r4) { errField('r4'); return; }
-  if (!r5) { errField('r5'); return; }
-  if (!r6) { errField('r6'); return; }
-  var btns = document.querySelectorAll('.submt');
-  var btn = btns[btns.length - 1];
-  btn.textContent = 'Sending...'; btn.disabled = true;
-  try {
-    var res = await fetch('https://formspree.io/f/mdapjkbl', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ 'First name': r1, 'Last name': r2, 'Email': r3, 'Phone': r4, 'Suburb': r5, 'About': r6 })
-    });
-    if (res.ok) {
-      document.getElementById('reseller-inner').style.display = 'none';
-      document.getElementById('reseller-success').style.display = 'block';
+async function submitModalForm(){
+  var m1=document.getElementById('m1').value.trim();
+  var m2=document.getElementById('m2').value.trim();
+  var m3=document.getElementById('m3').value.trim();
+  var m4=document.getElementById('m4').value.trim();
+  var m5=document.getElementById('m5').value;
+  var m6=document.getElementById('m6').value.trim();
+  var slots=Array.from(document.querySelectorAll('input[name="mslot"]:checked')).map(function(c){return c.value;}).join(', ');
+  if(!m1){errField('m1');return;}
+  if(!m3||!m3.includes('@')){errField('m3');return;}
+  if(!m4){errField('m4');return;}
+  if(!m5){errField('m5');return;}
+  if(!m6){errField('m6');return;}
+  var btn=document.querySelector('#bmodal-form-inner .submt');
+  btn.textContent='Sending...';btn.disabled=true;
+  try{
+    var res=await fetch('https://formspree.io/f/mdapjkbl',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({'Type':'Collection request (modal)','First name':m1,'Last name':m2,'Email':m3,'Phone':m4,'Suburb':m5,'Items':m6,'Preferred times':slots||'Not specified'})});
+    if(res.ok){
+      // Advance to step 2
+      document.getElementById('bmodal-form-panel').style.display='none';
+      document.getElementById('bmodal-calendly-panel').style.display='block';
+      document.getElementById('bstep1').className='bstep done';
+      document.getElementById('bstep2').className='bstep active';
+      document.getElementById('booking-modal').scrollTop=0;
     } else {
       alert('Something went wrong. Please email hello@cluttr.co.nz directly.');
-      btn.textContent = 'Submit application →'; btn.disabled = false;
+      btn.textContent='Next — pick a time →';btn.disabled=false;
     }
-  } catch(e) {
+  }catch(e){
     alert('Something went wrong. Please email hello@cluttr.co.nz directly.');
-    btn.textContent = 'Submit application →'; btn.disabled = false;
+    btn.textContent='Next — pick a time →';btn.disabled=false;
   }
 }
 
-function errField(id) {
-  var el = document.getElementById(id);
-  el.style.borderColor = '#EF4444'; el.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.1)';
-  el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.focus();
-  setTimeout(function() { el.style.borderColor = ''; el.style.boxShadow = ''; }, 2800);
+/* ---- INLINE FORM ---- */
+async function submitInlineForm(){
+  var f1=document.getElementById('if1').value.trim();
+  var f2=document.getElementById('if2').value.trim();
+  var f3=document.getElementById('if3').value.trim();
+  var f4=document.getElementById('if4').value.trim();
+  var f5=document.getElementById('if5').value;
+  var f6=document.getElementById('if6').value.trim();
+  var slots=Array.from(document.querySelectorAll('input[name="islot"]:checked')).map(function(c){return c.value;}).join(', ');
+  if(!f1){errField('if1');return;}
+  if(!f3||!f3.includes('@')){errField('if3');return;}
+  if(!f4){errField('if4');return;}
+  if(!f5){errField('if5');return;}
+  if(!f6){errField('if6');return;}
+  var btn=document.querySelector('#inline-form-inner .submt');
+  btn.textContent='Sending...';btn.disabled=true;
+  try{
+    var res=await fetch('https://formspree.io/f/mdapjkbl',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({'Type':'Collection request (inline)','First name':f1,'Last name':f2,'Email':f3,'Phone':f4,'Suburb':f5,'Items':f6,'Preferred times':slots||'Not specified'})});
+    if(res.ok){
+      document.getElementById('inline-form-inner').style.display='none';
+      document.getElementById('inline-form-success').style.display='block';
+    } else {
+      alert('Something went wrong. Please email hello@cluttr.co.nz directly.');
+      btn.textContent='Request a collection →';btn.disabled=false;
+    }
+  }catch(e){
+    alert('Something went wrong. Please email hello@cluttr.co.nz directly.');
+    btn.textContent='Request a collection →';btn.disabled=false;
+  }
 }
 
-var obs = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e, i) {
-    if (e.isIntersecting) {
-      e.target.style.animation = 'fadeUp 0.45s ' + (i * 0.05) + 's ease both';
-      e.target.style.opacity = '1';
-      obs.unobserve(e.target);
-    }
+/* ---- RESELLER MODAL ---- */
+function openResellerModal(){document.getElementById('reseller-modal').style.display='block';document.body.style.overflow='hidden';}
+function closeResellerModal(){document.getElementById('reseller-modal').style.display='none';document.body.style.overflow='';}
+function closeModalOutside(e){if(e.target===document.getElementById('reseller-modal'))closeResellerModal();}
+
+async function submitReseller(){
+  var r1=document.getElementById('r1').value.trim();
+  var r2=document.getElementById('r2').value.trim();
+  var r3=document.getElementById('r3').value.trim();
+  var r4=document.getElementById('r4').value.trim();
+  var r5=document.getElementById('r5').value;
+  var r6=document.getElementById('r6').value.trim();
+  if(!r1){errField('r1');return;}
+  if(!r3||!r3.includes('@')){errField('r3');return;}
+  if(!r4){errField('r4');return;}
+  if(!r5){errField('r5');return;}
+  if(!r6){errField('r6');return;}
+  var btn=document.querySelector('#reseller-inner .submt');
+  btn.textContent='Sending...';btn.disabled=true;
+  try{
+    var res=await fetch('https://formspree.io/f/mdapjkbl',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({'Type':'Reseller application','First name':r1,'Last name':r2,'Email':r3,'Phone':r4,'Suburb':r5,'About':r6})});
+    if(res.ok){document.getElementById('reseller-inner').style.display='none';document.getElementById('reseller-success').style.display='block';}
+    else{alert('Something went wrong. Please email hello@cluttr.co.nz directly.');btn.textContent='Submit application →';btn.disabled=false;}
+  }catch(e){alert('Something went wrong. Please email hello@cluttr.co.nz directly.');btn.textContent='Submit application →';btn.disabled=false;}
+}
+
+/* ---- SHARED ---- */
+function errField(id){
+  var el=document.getElementById(id);
+  el.style.borderColor='#EF4444';el.style.boxShadow='0 0 0 3px rgba(239,68,68,0.1)';
+  el.scrollIntoView({behavior:'smooth',block:'center'});el.focus();
+  setTimeout(function(){el.style.borderColor='';el.style.boxShadow='';},2800);
+}
+
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e,i){
+    if(e.isIntersecting){e.target.style.animation='fadeUp 0.45s '+(i*0.05)+'s ease both';e.target.style.opacity='1';obs.unobserve(e.target);}
   });
-}, { threshold: 0.12 });
-document.querySelectorAll('.step, .who-card, .av-card').forEach(function(el) {
-  el.style.opacity = '0';
-  obs.observe(el);
-});
+},{threshold:0.12});
+document.querySelectorAll('.step,.who-card').forEach(function(el){el.style.opacity='0';obs.observe(el);});
 </script>
 </body>
 </html>
