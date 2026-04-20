@@ -159,18 +159,6 @@ select {
   background-repeat: no-repeat; background-position: right 12px center; background-color: var(--off); padding-right: 36px; cursor: pointer;
 }
 textarea { resize: vertical; min-height: 88px; line-height: 1.6; }
-.slots { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
-.slot {
-  display: flex; align-items: center; gap: 8px; padding: 10px 11px;
-  border: 1.5px solid var(--border); border-radius: 10px; cursor: pointer;
-  transition: all 0.12s; font-size: 13px; color: var(--gray); user-select: none; background: var(--off);
-}
-.slot:hover { border-color: var(--blue); color: var(--black); }
-.slot input[type="checkbox"] { display: none; }
-.scheck { width: 16px; height: 16px; border-radius: 5px; border: 1.5px solid rgba(0,0,0,0.15); flex-shrink: 0; transition: all 0.12s; position: relative; background: white; }
-.slot input[type="checkbox"]:checked ~ .scheck { background: var(--blue); border-color: var(--blue); }
-.slot input[type="checkbox"]:checked ~ .scheck::after { content: ''; position: absolute; left: 4px; top: 2px; width: 5px; height: 8px; border: 2px solid white; border-top: none; border-left: none; transform: rotate(45deg); }
-.slot:has(input:checked) { border-color: var(--blue); background: rgba(0,119,252,0.06); color: var(--black); font-weight: 600; }
 .submt {
   width: 100%; background: var(--blue); color: white; border: none; border-radius: 12px;
   padding: 15px; font-size: 15px; font-weight: 700; font-family: var(--font);
@@ -193,9 +181,32 @@ textarea { resize: vertical; min-height: 88px; line-height: 1.6; }
   background: var(--off); border-radius: 18px; padding: 28px 24px;
   border: 1px solid var(--border);
 }
-.about-lead { font-size: 17px; font-weight: 700; line-height: 1.5; letter-spacing: -0.3px; margin-bottom: 16px; color: var(--black); }
+.founder-row {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 20px;
+  padding-bottom: 20px; border-bottom: 1px solid var(--border);
+}
+.founder-headshot {
+  width: 68px; height: 68px; border-radius: 50%;
+  object-fit: cover; object-position: center top;
+  border: 2.5px solid var(--blue); flex-shrink: 0;
+}
+.founder-headshot-fallback {
+  width: 68px; height: 68px; border-radius: 50%;
+  background: rgba(0,119,252,0.1); border: 2.5px solid var(--blue);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 800; color: var(--blue); flex-shrink: 0;
+}
+.founder-info-name { font-size: 15px; font-weight: 700; letter-spacing: -0.2px; margin-bottom: 2px; }
+.founder-info-role { font-size: 12px; color: var(--gray); font-weight: 500; }
+.about-lead { font-size: 16px; font-weight: 700; line-height: 1.55; letter-spacing: -0.2px; margin-bottom: 14px; color: var(--black); }
 .about-body { font-size: 14px; color: var(--gray); line-height: 1.8; }
 .about-body p + p { margin-top: 12px; }
+.about-pull {
+  margin: 18px 0; padding: 14px 16px;
+  background: rgba(0,119,252,0.05); border-left: 3px solid var(--blue);
+  border-radius: 0 10px 10px 0;
+}
+.about-pull p { font-size: 13px; font-weight: 600; color: var(--black); line-height: 1.6; font-style: italic; margin: 0; }
 .about-values { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
 .av-card { background: var(--white); border-radius: 12px; padding: 14px; border: 1px solid var(--border); }
 .av-label { font-size: 12px; font-weight: 700; color: var(--blue); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px; }
@@ -341,14 +352,37 @@ footer { background: var(--black); padding: 36px 20px; }
 <div class="about-bg section" id="about">
   <div class="section-inner">
     <div class="eyebrow">About us</div>
-    <h2 class="section-title">A better way to<br>clear it out.</h2>
+    <h2 class="section-title">Built from a<br>real problem.</h2>
     <div class="about-card">
-      <p class="about-lead">Cluttr was born out of a simple frustration — clearing out a home is hard work, and most people don't have the time, energy, or know-how to get good money for their stuff.</p>
-      <div class="about-body">
-        <p>We're a Christchurch-based startup building a marketplace that connects homeowners with skilled local resellers. You get to declutter without lifting a finger. Resellers get a steady stream of quality stock. Everyone wins.</p>
-        <p>Our resellers are vetted, local, and motivated — they only earn when your items sell, which means they're just as invested in getting you a great result as you are.</p>
-        <p>We're starting right here in Ōtautahi, and we're just getting started.</p>
+
+      <div class="founder-row">
+        <img
+          src="headshot-2.png"
+          alt="Zac Hemmings, Founder of Cluttr"
+          class="founder-headshot"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+        />
+        <div class="founder-headshot-fallback" style="display:none;">ZH</div>
+        <div>
+          <div class="founder-info-name">Zac Hemmings</div>
+          <div class="founder-info-role">Founder — Christchurch, NZ</div>
+        </div>
       </div>
+
+      <p class="about-lead">Cluttr didn't start as a business idea. It started as a way to help people I love deal with one of the most overwhelming parts of a life transition — the stuff.</p>
+
+      <div class="about-body">
+        <p>I watched people close to me go through major life events — a parent passing, a home being cleared, a family trying to figure out what to do with decades of accumulated belongings. The emotional weight is already immense. And then you add the practical burden of actually dealing with it all.</p>
+
+        <div class="about-pull">
+          <p>"We accumulate, we hoard, and it often takes a massive life event — or literally running out of space — to actually deal with it."</p>
+        </div>
+
+        <p>After talking to hundreds of people, I saw this pattern everywhere. Platforms like TradeMe and Facebook Marketplace are great if you have the time and energy. But for someone going through a bereavement, a divorce, or a move overseas — that's not realistic. So the default becomes: skip it, chuck it, lose the value.</p>
+
+        <p>We're already doing this in Christchurch right now — helping real people deal with real life transitions, and they're stoked. A reseller collects your stuff, handles the listings and the buyers, and you get half of whatever it sells for. No strangers at the door. No wasted weekends. Just money, back in your pocket.</p>
+      </div>
+
       <div class="about-values">
         <div class="av-card">
           <div class="av-label">Fair split</div>
